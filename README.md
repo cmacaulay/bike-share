@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/cmacaulay/bike-share.png?label=ready&title=Ready)](https://waffle.io/cmacaulay/bike-share)
 # Bike Share
 
 ## Abstract
