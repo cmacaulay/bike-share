@@ -7,6 +7,7 @@ RSpec.describe "when user visits a station path" do
     visit("/stations/#{station.id}")
 
     expect {click_on 'Delete Station'}.to change(Station.all, :count).by(-1)
+    expect(page).to_not have_content(station.name)
     expect(current_path).to eq("/stations")
   end
 end
