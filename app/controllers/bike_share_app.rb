@@ -2,7 +2,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/' do
 
-    erb: index
+    erb :index
   end
 
   get '/stations' do
@@ -26,7 +26,7 @@ class BikeShareApp < Sinatra::Base
   get '/stations/:id/edit' do
     @station = Station.find(params[:id])
 
-    erb :'stations/edit''
+    erb :'stations/edit'
   end
 
   post '/stations' do
