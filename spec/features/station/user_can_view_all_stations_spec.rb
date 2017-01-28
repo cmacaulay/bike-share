@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 
 RSpec.describe "when user visits stations path" do
   it "user view all stations" do
@@ -8,7 +8,6 @@ RSpec.describe "when user visits stations path" do
 
     visit('/stations')
 
-    save_and_open_page
     expect(page).to have_content(station_one.name)
     expect(page).to have_content(station_two.dock_count)
     expect(page).to have_content(station_three.city)

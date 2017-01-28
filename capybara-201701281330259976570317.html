@@ -1,0 +1,9 @@
+<h1>Edit Station</h1>
+  <form action="/stations/1" method="POST">
+    <input type="hidden" name="_method" value="PUT"/>
+    <input type="text" name="station[name]" value = "Max Station" placeholder="Name"/><br>
+    <input type="integer" name="station[dock_count]" value="4" placeholder="Dock Count"/><br>
+    <input type="text" name="station[city]" value="Boulder" placeholder="City"/><br>
+    <input type="date" name="station[installation_date]" value="2005-07-09" placeholder="Installation Date"/><br>
+    <input type="submit" value="Submit Changes"/>
+  </form>
