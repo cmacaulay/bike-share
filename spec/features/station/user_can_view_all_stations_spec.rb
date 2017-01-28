@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../../spec_helper'
 
 RSpec.describe "when user visits stations path" do
   it "user view all stations" do
