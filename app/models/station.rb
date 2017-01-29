@@ -7,7 +7,6 @@ class Station < ActiveRecord::Base
 
   def self.total_stations
     count(:all)
-    #all.count (plan b)
   end
 
   def self.average_bikes_per_station
@@ -29,4 +28,19 @@ class Station < ActiveRecord::Base
     # station most recently installed
     order(:installation_date).last
   end
+
+  def self.oldest_station
+    order(:installation_date).first
+  end
+
+  def self.fewest_bikes
+    minimum(:dock_count)
+  end
+
+  def self.find_by_fewest_bikes
+    #returns instances of station that have the lowest dock_count 
+    return [] if fewest_bikes.nil?
+    where("dock_count = #{fewest_bikes}")
+  end
+
 end
