@@ -8,7 +8,7 @@ RSpec.describe Station do
       expect(station_2).to_not be_valid
     end
   end
-  
+
   describe 'validations' do
     it "is invalid without a name" do
       station = Station.create(dock_count: 5, city: "Denver", installation_date: "2016-02-05")
@@ -83,4 +83,44 @@ RSpec.describe Station do
       expect(result.last.name).to eq("Station3")
     end
   end
+
+    describe '.fewest_bikes' do
+    it "returns fewest_bikes" do
+      Station.create(name: "Station1", dock_count: 7, city: "San Francisco", installation_date: "2013-03-10")
+      Station.create(name: "Station2", dock_count: 5, city: "San Francisco", installation_date: "2013-03-10")
+      Station.create(name: "Station3", dock_count: 10, city: "San Francisco", installation_date: "2013-03-10")
+      result = Station.fewest_bikes
+
+      expect(result.first.name).to eq("Station2")
+      expect(result.last.name).to eq("Station3")
+    end
+  end
+
+  describe '.oldest_station' do
+    it "returns oldest station" do
+      Station.create(name: "Station1", dock_count: 5, city: "San Francisco", installation_date: "2013-03-10")
+      Station.create(name: "Station2", dock_count: 5, city: "San Francisco", installation_date: "2013-05-02")
+      Station.create(name: "Station3", dock_count: 5, city: "San Francisco", installation_date: "2013-06-12")
+      result = Station.oldest_station
+
+      expect(result.first.name).to eq("Station1")
+      expect(result.last.name).to eq("Station3")
+    end
+  end
+
+  describe '.newest_station' do
+    it "returns newest station" do
+      Station.create(name: "Station1", dock_count: 5, city: "San Francisco", installation_date: "2013-03-10")
+      Station.create(name: "Station2", dock_count: 5, city: "San Francisco", installation_date: "2013-05-02")
+      Station.create(name: "Station3", dock_count: 5, city: "San Francisco", installation_date: "2013-06-12")
+      result = Station.newest_station
+
+      expect(result.first.name).to eq("Station3")
+      expect(result.last.name).to eq("Station1")
+    end
+  end
+
+
+
+
 end
