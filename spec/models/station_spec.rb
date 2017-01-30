@@ -21,14 +21,14 @@ RSpec.describe Station do
 
   describe 'validations' do
     it "is invalid without a dock count" do
-      station = Station.record(name: "Station1", dock_count: 2, installation_date: "2014-09-04")
+      station = Station.create(name: "Station1", dock_count: 2, installation_date: "2014-09-04")
       expect(station).to_not be_valid
     end
   end
 
   describe 'validations' do
     it "is invalid without a city" do
-      station = Station.record(name: "Station1", dock_count: 1, installation_date: "2015-10-02")
+      station = Station.create(name: "Station1", dock_count: 1, installation_date: "2015-10-02")
       expect(station).to_not be_valid
     end
   end
@@ -57,7 +57,7 @@ RSpec.describe Station do
       denver.stations.create(name: "Station1", dock_count: 10, installation_date: "2013-03-10")
       oakland.stations.create(name: "Station2", dock_count: 5, installation_date: "2013-02-08")
       denver.stations.create(name: "Station3", dock_count: 7, installation_date: "2011-05-14")
-      
+
       expect(Station.total_stations).to eq(3)
     end
   end
