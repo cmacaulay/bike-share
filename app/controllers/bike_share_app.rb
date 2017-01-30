@@ -55,9 +55,14 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/dashboard'
   end
 
+  get '/station-dashboard' do
+    @stations = Station.all
+    erb :'stations/dashboard'
+  end
+
   #TRIPS
    get '/trips' do
-     @trips = Trip.all #see how to order by date and display them in 30 trips view
+     @trips = Trip.all.order('start_date DESC') #see how to display them in 30 trips view
 
     erb :'/trips/index'
    end
