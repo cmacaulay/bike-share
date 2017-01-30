@@ -2,7 +2,7 @@ require_relative '../../spec_helper'
 
 RSpec.describe "when user visits edit station path" do
   it "user can edit a station" do
-    City.create(name: "Aukland")
+    City.create(name: "Auckland")
     boulder = City.create(name: "Boulder")
     station = boulder.stations.create(name: "Max Station", dock_count: 4, installation_date: "2005-07-09")
 
@@ -17,7 +17,7 @@ RSpec.describe "when user visits edit station path" do
 
     station = Station.find_by(name: "Amara Station")
     expect(station.dock_count).to eq(6)
-    expect(page).to have_content("Denver")
+    expect(page).to have_content("Auckland")
     expect(current_path).to eq("/stations/#{station.id}")
   end
 end

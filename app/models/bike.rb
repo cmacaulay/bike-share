@@ -1,4 +1,5 @@
 class Bike < ActiveRecord::Base
-  validates :name, presence: true
+  validates :given_id,
+    presence: true
   has_many :trips
 end
