@@ -7,8 +7,7 @@ class Trip < ActiveRecord::Base
             :bike_id,
             :subscription_id,
                presence: true
-               
-  belongs_to :zipcode
+
   belongs_to :bike
   belongs_to :subscription
   belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
