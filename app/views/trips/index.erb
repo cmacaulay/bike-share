@@ -10,5 +10,11 @@
     <h3>Bike ID: <%= station.bike_id %></h3>
     <h3>Subscription Type: <%= station.subscription_type %></h3>
     <h3>Zip Code: <%= station.zip_code %></h3>
+    <form action="/trips/<%= @trip.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Trip">
+    </form>
   <% end %>
 </div>
+
+<%# Figure out how to order trips by date, only display 30trips at a time and the buttons to back and forth%>
