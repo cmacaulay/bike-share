@@ -7,7 +7,12 @@
     <label for="dock_count">Dock Count: </label>
     <input type="textfield" name="station[dock_count]">
     <label for="city">City: </label>
-    <input type="textfield" name="station[city_name]">
+    <select name="station[city_id]">
+      <% @cities.each do |city| %>
+        <option value=<%= city.id %>><%= city.name %></option>
+      <% end %>
+    </select>
+
     <label >Installation Date: </label>
     <input type="textfield" name="station[installation_date]">
     <input type="submit" value="Create New Station" />

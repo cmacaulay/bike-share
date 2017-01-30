@@ -13,6 +13,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/stations/new' do
     @station = Station.new
+    @cities = City.all
 
     erb :'stations/new'
   end
@@ -24,6 +25,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/stations/:id/edit' do
+    @cities  = City.all
     @station = Station.find(params[:id])
 
     erb :'stations/edit'
@@ -33,13 +35,7 @@ class BikeShareApp < Sinatra::Base
     @station = Station.record(params[:station])
     redirect "/stations/#{@station.id}"
   end
-## THIS CODE IS REPEATED ##
-  get '/stations/:id/edit' do
-    @station = Station.find(params[:id])
 
-    erb :'stations/edit'
-  end
-############################
    put '/stations/:id' do
     @station = Station.record_update(params[:id], params[:station])
     redirect "/stations/#{@station.id}"
