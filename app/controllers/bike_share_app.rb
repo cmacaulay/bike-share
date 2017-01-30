@@ -30,7 +30,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    @station = Station.create(params[:station])
+    @station = Station.record(params[:station])
     redirect "/stations/#{@station.id}"
   end
 ## THIS CODE IS REPEATED ##
@@ -41,7 +41,7 @@ class BikeShareApp < Sinatra::Base
   end
 ############################
    put '/stations/:id' do
-    @station = Station.update(params[:id], params[:station])
+    @station = Station.record_update(params[:id], params[:station])
     redirect "/stations/#{@station.id}"
   end
 
