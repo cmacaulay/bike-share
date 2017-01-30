@@ -1,4 +1,5 @@
 class Station < ActiveRecord::Base
+  belongs_to :city
   validates :name,
             :dock_count,
             :city,
@@ -38,7 +39,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.find_by_fewest_bikes
-    #returns instances of station that have the lowest dock_count 
+    #returns instances of station that have the lowest dock_count
     return [] if fewest_bikes.nil?
     where("dock_count = #{fewest_bikes}")
   end
