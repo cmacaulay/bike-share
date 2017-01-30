@@ -1,0 +1,9 @@
+<h1>Edit Trip</h1>
+  <form action="/trips/<%= @trip.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT"/>
+    <input type="text" name="trip[duration]" value = "<%= @trip.duration %>" placeholder="Duration"/><br>
+    <input type="date" name="trip[start_date]" value="<%= @trip.start_date %>" placeholder="Start Date"/><br>
+    <input type="text" name="trip[city]" value="<%= @trip.city %>" placeholder="City"/><br>
+    <input type="date" name="trip[installation_date]" value="<%= @trip.installation_date %>" placeholder="Installation Date"/><br>
+    <input type="submit" value="Submit Changes"/>
+  </form>
