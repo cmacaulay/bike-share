@@ -30,7 +30,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   post '/stations' do
-    @station = Station.create(params[:station])
+    @station = Station.record(params[:station])
     redirect "/stations/#{@station.id}"
   end
 ## THIS CODE IS REPEATED ##
@@ -41,7 +41,7 @@ class BikeShareApp < Sinatra::Base
   end
 ############################
    put '/stations/:id' do
-    @station = Station.update(params[:id], params[:station])
+    @station = Station.record_update(params[:id], params[:station])
     redirect "/stations/#{@station.id}"
   end
 
@@ -50,9 +50,14 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+  get '/station-dashboard' do
+    @stations = Station.all
+    erb :'stations/dashboard'
+  end
+
   #TRIPS
    get '/trips' do
-     @trips = Trip.all #see how to order by date and display them in 30 trips view
+     @trips = Trip.all.order('start_date DESC') #see how to display them in 30 trips view
 
     erb :'/trips/index'
    end
@@ -89,4 +94,5 @@ class BikeShareApp < Sinatra::Base
     Trip.destroy(paramas[:id])
     redirect '/trips'
   end
-end
+
+ end
