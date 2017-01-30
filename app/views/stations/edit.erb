@@ -8,6 +8,7 @@
         <option value=<%= city.id %>><%= city.name %></option>
       <% end %>
     </select>
+
     <input type="date" name="station[installation_date]" value="<%= @station.installation_date %>" placeholder="Installation Date"/><br>
     <input type="submit" value="Submit Changes"/>
   </form>

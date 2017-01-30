@@ -5,6 +5,7 @@ RSpec.describe Station do
     it "is invalid without all attributes" do
       station_1 = Station.create(name: "Station1", dock_count: 20, city_id: 6)
       station_2 = Station.create(name: "Station2", dock_count: 30, installation_date: "2016-02-06")
+
       expect(station_1).to_not be_valid
       expect(station_2).to_not be_valid
     end
@@ -13,20 +14,21 @@ RSpec.describe Station do
   describe 'validations' do
     it "is invalid without a name" do
       station = Station.create(dock_count: 5, city_id: 6, installation_date: "2016-02-05")
+
       expect(station).to_not be_valid
     end
   end
 
   describe 'validations' do
     it "is invalid without a dock count" do
-      station = Station.create(name: "Station1", dock_count: 2, installation_date: "2014-09-04")
+      station = Station.record(name: "Station1", dock_count: 2, installation_date: "2014-09-04")
       expect(station).to_not be_valid
     end
   end
 
   describe 'validations' do
     it "is invalid without a city" do
-      station = Station.create(name: "Station1", dock_count: 1, installation_date: "2015-10-02")
+      station = Station.record(name: "Station1", dock_count: 1, installation_date: "2015-10-02")
       expect(station).to_not be_valid
     end
   end
@@ -34,6 +36,7 @@ RSpec.describe Station do
   describe 'validations' do
     it "is invalid without an installation_date" do
       station = Station.create(name: "Station1", dock_count: 5, city_id: 4)
+
       expect(station).to_not be_valid
     end
   end
@@ -41,6 +44,7 @@ RSpec.describe Station do
   describe 'validations' do
     it "is valid with all attributes" do
       station = Station.create(name: "Station1", dock_count: 3, city_id: 3, installation_date: "2015-03-21")
+
       expect(station).to be_valid
     end
   end
@@ -53,7 +57,7 @@ RSpec.describe Station do
       denver.stations.create(name: "Station1", dock_count: 10, installation_date: "2013-03-10")
       oakland.stations.create(name: "Station2", dock_count: 5, installation_date: "2013-02-08")
       denver.stations.create(name: "Station3", dock_count: 7, installation_date: "2011-05-14")
-
+      
       expect(Station.total_stations).to eq(3)
     end
   end

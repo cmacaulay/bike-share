@@ -1,12 +1,20 @@
 class Station < ActiveRecord::Base
   belongs_to :city
   has_many   :trips
+
   validates :name,
             :dock_count,
             :city_id,
             :installation_date,
               presence: true
 
+  def find_city_id(city_name)
+    City.record(name: city_name).id
+  end
+
+  def self.find_city_id(city_name)
+    City.record(name: city_name).id
+  end
 
   def self.total_stations
     count(:all)
