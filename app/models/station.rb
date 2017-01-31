@@ -1,3 +1,5 @@
+require 'pry'
+
 class Station < ActiveRecord::Base
   belongs_to :city
   has_many   :trips
@@ -54,29 +56,25 @@ class Station < ActiveRecord::Base
     where("dock_count = #{fewest_bikes}")
   end
 
-  def most_frequent_bike_id
-    Station.group(:bike_id).count("id").max_by do |bike, count|
-      count
-    end
-    #returns array of [bike_ids, number of rides]
+  def most_frequent_bike_id(trip, bike)
+    Trip.where(bike_id: trip.bike_id).count
   end
 
-  def self.most_frequent_destination
-    Station.group(:end_station_id).count("id").max_by do |trip, count|
-      count
-    end
+  def most_frequent_destination(trip)
+    Trip.where(end_station_id: trip.end_station_id).count
   end
 
-  def self.date_with_most_trips
-    Station.group(:start_date).count("id").max_by do |trip, count|
+  def date_with_most_trips(trip)
+    result = Trip.group(:start_date).count("id").max_by do |start_date, count|
       count
     end
+    result.first
   end
 
-  def self.most_frequent_zipcode
-    Station.group(:zipcode).count("id").max_by do |trip, count|
+  def most_frequent_zipcode(trip)
+    result = Trip.group(:zipcode).count("id").max_by do |zipcode, count|
       count
     end
+    result.first
   end
-
 end

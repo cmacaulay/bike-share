@@ -140,7 +140,6 @@ RSpec.describe Station do
       result = Station.newest_station
 
       expect(result.name).to eq("Station3")
-
     end
   end
 
@@ -159,12 +158,16 @@ RSpec.describe Station do
   describe '.most_frequent_bike_id' do
     it "returns most_frequent_starting_bikes per station" do
       mission = Station.create(name: "Mission", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      bike1 = Bike.create(given_id: 1)
+      bike2 = Bike.create(given_id: 2)
+      bike3= Bike.create(given_id: 3)
+
       trip1 = Trip.create(duration:       60,
                          start_date:      "2013/01/01 12:00",
                          start_station_id: 4,
                          end_date:        "2005/06/23 16:31",
                          end_station_id:   2,
-                         bike_id:          12,
+                         bike_id:          3,
                          subscription_id:  1,
                         )
       trip2 = Trip.create(duration:         20,
@@ -172,7 +175,7 @@ RSpec.describe Station do
                           start_station_id: 4,
                           end_date:         "2013/08/06 12:00",
                           end_station_id:   3,
-                          bike_id:          7,
+                          bike_id:          3,
                           subscription_id:  2,
                         )
       trip3 = Trip.create(duration:         30,
@@ -180,12 +183,12 @@ RSpec.describe Station do
                           start_station_id: 4,
                           end_date:         "2005/04/03 17:00",
                           end_station_id:   6,
-                          bike_id:          7,
+                          bike_id:          1,
                           subscription_id:  2,
                         )
 
-      expected = mission.most_frequent_bike_id
-      expect(expected).to eq(7)
+      expected = mission.most_frequent_bike_id(trip1, bike1)
+      expect(expected).to eq(2)
     end
   end
 
@@ -217,7 +220,7 @@ RSpec.describe Station do
                           subscription_id:  2,
                         )
 
-      expected = mission.most_frequent_destination
+      expected = mission.most_frequent_destination(trip1)
       expect(expected).to eq(2)
     end
   end
@@ -250,8 +253,8 @@ RSpec.describe Station do
                           subscription_id:  2,
                         )
 
-      expected = mission.date_with_most_trips
-      expect(expected).to eq("2013/03/01")
+      expected = mission.date_with_most_trips(trip1)
+      expect(expected).to eq("2013/03/01 12:00")
     end
   end
 
@@ -286,8 +289,9 @@ RSpec.describe Station do
                           zipcode:          87757
                         )
 
-      expected = mission.most_frequent_zipcode
-      expect(expected).to eq("87757")
+      expected = mission.most_frequent_zipcode(trip1)
+      expect(expected).to eq(87757)
     end
   end
+
 end
