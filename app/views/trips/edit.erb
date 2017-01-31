@@ -4,10 +4,10 @@
     <input type="text" name="trip[duration]" value = "<%= @trip.duration %>" placeholder="Duration"/><br>
     <input type="date" name="trip[start_date]" value="<%= @trip.start_date %>" placeholder="Start Date"/><br>
     <input type="date" name="trip[end_date]" value="<%= @trip.end_date %>" placeholder="End Date"/><br>
-    <input type="text" name="trip[start_station]" value= "<%= @trip.start_station %>" placeholder="Start Station"/><br>
-    <input type="text" name="trip[end_station]" value= "<%= @trip.end_station %>" placeholder="End Station"/><br>
+    <input type="text" name="trip[start_station_id]" value= "<%= @trip.start_station %>" placeholder="Start Station"/><br>
+    <input type="text" name="trip[end_station_id]" value= "<%= @trip.end_station %>" placeholder="End Station"/><br>
     <input type="integer" name="trip[bike_id]" value="<%=@trip.bike_id %>" placeholder="Bike ID"/><br>
-    <input type="text" name="trip[subscription_type]" value= "<%= @trip.subscription_type %>" placeholder="Subscription Type"/><br>
-    <input type="integer" name="trip[zip_code]" value="<%=@trip.zip_code %>" placeholder="Zip Code"/><br>
+    <input type="text" name="trip[subscription_id]" value= "<%= @trip.subscription %>" placeholder="Subscription Type"/><br>
+    <input type="integer" name="trip[zipcode]" value="<%=@trip.zipcode %>" placeholder="Zip Code"/><br>
     <input type="submit" value="Submit Changes"/>
   </form>
