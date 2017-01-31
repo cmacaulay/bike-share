@@ -145,6 +145,23 @@ RSpec.describe Station do
   end
 
 
+  describe '.rides_started_at_station' do
+    it "returns rides started at station" do
+      station1 = Station.create!(name: "Station1", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      trip1 = Trip.create!(duration: 7, start_date: "2013-05-16", start_station_id: 1, end_date: "2013-05-16", end_station_id: 2, bike_id: 3, subscription_id: 2)
+
+      expect(station1.rides_started_at_station(trip1)).to eq(1)
+      end
+  end
+
+    describe '.rides_ended_at_station' do
+    it "returns rides ended at station" do
+      station1 = Station.create!(name: "Station1", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      trip1 = Trip.create!(duration: 7, start_date: "2013-05-16", start_station_id: 1, end_date: "2013-05-16", end_station_id: 2, bike_id: 3, subscription_id: 2)
+
+      expect(station1.rides_ended_at_station(trip1)).to eq(1)
+      end
+  end
 
 
 end
