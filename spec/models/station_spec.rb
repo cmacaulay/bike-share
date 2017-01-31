@@ -144,9 +144,150 @@ RSpec.describe Station do
     end
   end
 
-  describe
+  describe '.average_bikes_per_station' do
+    it "returns average bikes per station" do
+      san_francisco = City.create(name: "San Francisco")
 
+      san_francisco.stations.create(name: "Station1", dock_count: 15, installation_date: "2013-03-10")
+      san_francisco.stations.create(name: "Station1", dock_count: 5, installation_date: "2013-03-10")
 
+      expected = Station.average_bikes_per_station.to_i
+      expect(expected).to eq(10)
+    end
+  end
 
+  describe '.most_frequent_bike_id' do
+    it "returns most_frequent_starting_bikes per station" do
+      mission = Station.create(name: "Mission", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      trip1 = Trip.create(duration:       60,
+                         start_date:      "2013/01/01 12:00",
+                         start_station_id: 4,
+                         end_date:        "2005/06/23 16:31",
+                         end_station_id:   2,
+                         bike_id:          12,
+                         subscription_id:  1,
+                        )
+      trip2 = Trip.create(duration:         20,
+                          start_date:       "2005/01/01 12:00",
+                          start_station_id: 4,
+                          end_date:         "2013/08/06 12:00",
+                          end_station_id:   3,
+                          bike_id:          7,
+                          subscription_id:  2,
+                        )
+      trip3 = Trip.create(duration:         30,
+                          start_date:       "2005/04/03 15:00",
+                          start_station_id: 4,
+                          end_date:         "2005/04/03 17:00",
+                          end_station_id:   6,
+                          bike_id:          7,
+                          subscription_id:  2,
+                        )
 
+      expected = mission.most_frequent_bike_id
+      expect(expected).to eq(7)
+    end
+  end
+
+  describe '.most_frequent_destination' do
+    it "returns most_frequent_destination per station" do
+      mission = Station.create(name: "Mission", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      trip1 = Trip.create(duration:       60,
+                         start_date:      "2013/01/01 12:00",
+                         start_station_id: 4,
+                         end_date:        "2005/06/23 16:31",
+                         end_station_id:   2,
+                         bike_id:          12,
+                         subscription_id:  1,
+                        )
+      trip2 = Trip.create(duration:         20,
+                          start_date:       "2005/01/01 12:00",
+                          start_station_id: 4,
+                          end_date:         "2013/08/06 12:00",
+                          end_station_id:   2,
+                          bike_id:          7,
+                          subscription_id:  2,
+                        )
+      trip3 = Trip.create(duration:         30,
+                          start_date:       "2005/04/03 15:00",
+                          start_station_id: 4,
+                          end_date:         "2005/04/03 17:00",
+                          end_station_id:   6,
+                          bike_id:          5,
+                          subscription_id:  2,
+                        )
+
+      expected = mission.most_frequent_destination
+      expect(expected).to eq(2)
+    end
+  end
+
+  describe '.date_with_most_trips' do
+    it "returns date with most starting trips per station" do
+      mission = Station.create(name: "Mission", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      trip1 = Trip.create(duration:       60,
+                         start_date:      "2013/03/01 12:00",
+                         start_station_id: 4,
+                         end_date:        "2005/03/01 16:31",
+                         end_station_id:   2,
+                         bike_id:          12,
+                         subscription_id:  1,
+                        )
+      trip2 = Trip.create(duration:         20,
+                          start_date:       "2013/03/01 12:00",
+                          start_station_id: 4,
+                          end_date:         "2013/03/02 12:00",
+                          end_station_id:   3,
+                          bike_id:          7,
+                          subscription_id:  2,
+                        )
+      trip3 = Trip.create(duration:         30,
+                          start_date:       "2015/04/03 15:00",
+                          start_station_id: 4,
+                          end_date:         "2015/04/03 17:00",
+                          end_station_id:   6,
+                          bike_id:          5,
+                          subscription_id:  2,
+                        )
+
+      expected = mission.date_with_most_trips
+      expect(expected).to eq("2013/03/01")
+    end
+  end
+
+  describe '.most_frequent_zipcode' do
+    it "returns most frequent zipcode per station" do
+      mission = Station.create(name: "Mission", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      trip1 = Trip.create(duration:       60,
+                         start_date:      "2013/03/03 12:00",
+                         start_station_id: 4,
+                         end_date:        "2005/03/03 16:31",
+                         end_station_id:   2,
+                         bike_id:          12,
+                         subscription_id:  1,
+                         zipcode:          87757
+                        )
+      trip2 = Trip.create(duration:         20,
+                          start_date:       "2013/03/07 12:00",
+                          start_station_id: 4,
+                          end_date:         "2013/03/08 12:00",
+                          end_station_id:   3,
+                          bike_id:          7,
+                          subscription_id:  2,
+                          zipcode:          87891
+                        )
+      trip3 = Trip.create(duration:         30,
+                          start_date:       "2015/04/03 15:00",
+                          start_station_id: 4,
+                          end_date:         "2015/04/03 17:00",
+                          end_station_id:   6,
+                          bike_id:          5,
+                          subscription_id:  2,
+                          zipcode:          87757
+                        )
+
+      expected = mission.most_frequent_zipcode
+      expect(expected).to eq("87757")
+    end
+  end
 end
