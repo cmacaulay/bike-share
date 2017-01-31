@@ -54,4 +54,20 @@ class Station < ActiveRecord::Base
     where("dock_count = #{fewest_bikes}")
   end
 
+  def self.most_frequent_starting_bike_id
+    :bike_id
+  end
+
+  def self.most_frequent_destination
+    maximum(:end_station_id)
+  end
+
+  def self.date_with_most_trips_starting
+    maximum(:start_date)
+  end
+
+  def self.most_frequent_zipcode_starting
+    maximum(:zipcode)
+  end
+
 end
