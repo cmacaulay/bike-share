@@ -339,6 +339,7 @@ RSpec.describe Trip do
     end
   end
 
+
   describe '.most_popular_starting_station' do
     it 'returns nil when no trips are in database' do
       expect(Trip.most_popular_starting_station).to eq(nil)
