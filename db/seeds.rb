@@ -5,9 +5,9 @@ require_relative 'seed_helper'
     file_name = 'db/csv/station.csv'
     CSV.foreach(file_name, headers: true, header_converters: :symbol) do |row|
 
-                name = row[:name]
-                dock_count = row[:dock_count]
-                city_name = row[:city]
+                name              = row[:name]
+                dock_count        = row[:dock_count]
+                city_name         = row[:city]
                 installation_date = transform_date(row[:installation_date])
 
                 city = City.find_or_create_by(name: city_name)
