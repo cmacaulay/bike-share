@@ -7,6 +7,7 @@ gem 'sinatra-activerecord'
 gem 'pry'
 gem 'rake'
 gem 'rb-readline'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'shotgun'
