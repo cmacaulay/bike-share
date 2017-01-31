@@ -7,15 +7,32 @@ RSpec.describe "when a user visits a trip path" do
 
     trip = Trip.create(duration:         67,
                        start_date:       "2013/01/01 12:00",
-                       start_station_id:   station_one.name,
+                       start_station:   station_one,
                        end_date:         "2005/06/23 16:31",
-                       end_station_id:     station_two.name,
+                       end_station:     station_two,
                        bike_id:          12,
                        subscription_id:  1,
                        zipcode:           87877
                       )
+    # binding.pry
+    visit "/trips/#{trip.id}/edit"
 
-    visit "/trips/#{trip.id}"
-    
+    # save_and_open_page
+    fill_in 'trip[duration]', with: 45
+    fill_in 'trip[start_date]', with: "2015/03/02 15:00"
+    select "Station2", from: 'trip[start_station_id]'
+    fill_in 'trip[end_date]', with: "2015/03/02 16:31"
+    select 'Station1', from: 'trip[end_station_id]'
+    fill_in 'trip[bike_id]', with: 14
+    fill_in 'trip[subscription_id]', with: 2
+    fill_in 'trip[zipcode]', with: 87878
+
+    click_on 'Submit Changes'
+
+    trip = Trip.last
+    expect(trip.duration).to eq(45)
+    expect(page).to have_content(14)
+    expect(current_path).to eq("/trips/#{trip.id}")
+
   end
 end
