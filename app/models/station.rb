@@ -58,14 +58,15 @@ class Station < ActiveRecord::Base
 
   def most_frequent_bike_id(trip, bike)
     Trip.where(bike_id: trip.bike_id).count
+  end
 
   def rides_started_at_station(trip)
     Trip.where(start_station_id: trip.start_station_id).count
-
   end
 
-    def rides_ended_at_station(trip)
+  def rides_ended_at_station(trip)
     Trip.where(end_station_id: trip.end_station_id).count
+  end
 
   def most_frequent_starting_bike_id
     Station.group(:bike_id).count("id").max_by do |bike, count|
