@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bay Area Bike Share</title>
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/application.css">
+    <title>Bay Area Bike Share</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+          <a href="index.php" class='navbar-brand'>Bay Area Bike Share</a>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav nav-pills navbar-right navbar-nav">
+                    <li role="presentation" class="menu"><a href="about.php">About</a></li>
+                    <li role="presentation" class="menu"><a href="about.php">Stations</a></li>
+                    <li role="presentation" class="menu"><a href="about.php">Register</a></li>
+                    <li role="presentation" class="menu"><a href="about.php">Contact</a></li>
+                    <!-- <li role="presentation" class="menu dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Give us feedback</a></li>
+                      </ul> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--- HERE STARTS THE DYNAMIC PART OF EACH .ERB -->
+    <h1>Edit Trip</h1>
+  <form action="/trips/1" method="POST">
+    <input type="hidden" name="_method" value="PUT"/>
+    <input type="text" name="trip[duration]" value = "67" placeholder="Duration"/><br>
+    <input type="date" name="trip[start_date]" value="2013/01/01 12:00" placeholder="Start Date"/><br>
+    <input type="date" name="trip[end_date]" value="2005/06/23 16:31" placeholder="End Date"/><br>
+    <select name="station[start_station_id]">
+      
+        <option value=1>Station1</option>
+      
+        <option value=2>Station2</option>
+      
+    </select>
+    <select name="station[end_station_id]">
+      
+        <option value=1>Station1</option>
+      
+        <option value=2>Station2</option>
+      
+    </select>
+    <input type="integer" name="trip[bike_id]" value="12" placeholder="Bike ID"/><br>
+    <input type="text" name="trip[subscription_id]" value= "" placeholder="Subscription Type"/><br>
+    <input type="integer" name="trip[zipcode]" value="87877" placeholder="Zip Code"/><br>
+    <input type="submit" value="Submit Changes"/>
+  </form>
+
+<!--- HERE ENDS THE DYNAMIC PART OF EACH .ERB -->
+  <footer class="primary-footer">
+    <small class="copyright">&copy; Bay Area Bike Share</small>
+    <ul class="social-media">
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+      </li>
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+      </li>
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+      </li>
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src='js/bootstrap.js'></script>
+
+  </body>
+</html>

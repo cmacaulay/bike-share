@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bay Area Bike Share</title>
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/application.css">
+    <title>Bay Area Bike Share</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+          <a href="index.php" class='navbar-brand'>Bay Area Bike Share</a>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav nav-pills navbar-right navbar-nav">
+                    <li role="presentation" class="menu"><a href="about.php">About</a></li>
+                    <li role="presentation" class="menu"><a href="about.php">Stations</a></li>
+                    <li role="presentation" class="menu"><a href="about.php">Register</a></li>
+                    <li role="presentation" class="menu"><a href="about.php">Contact</a></li>
+                    <!-- <li role="presentation" class="menu dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Give us feedback</a></li>
+                      </ul> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--- HERE STARTS THE DYNAMIC PART OF EACH .ERB -->
+    <h1>Trips</h1>
+
+<div class="trips">
+  
+    <h3>Duration: 67</h3>
+    <h3>Start Date: 2013/01/01 12:00</h3>
+    <h3>Start Station: Station1</h3>
+    <h3>End Date: 2005/06/23 16:31</h3>
+    <h3>End Station: Station2</h3>
+    <h3>Bike ID: 12</h3>
+    <h3>Subscription Type: 1</h3>
+    <h3>Zip Code: 87877</h3>
+    
+    <form action="/trips/1" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Trip">
+    </form>
+  
+    <h3>Duration: 82</h3>
+    <h3>Start Date: 2013/05/12 12:00</h3>
+    <h3>Start Station: Station2</h3>
+    <h3>End Date: 2005/06/30 16:31</h3>
+    <h3>End Station: Station3</h3>
+    <h3>Bike ID: 17</h3>
+    <h3>Subscription Type: 2</h3>
+    <h3>Zip Code: 87854</h3>
+    
+    <form action="/trips/2" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Trip">
+    </form>
+  
+    <h3>Duration: 75</h3>
+    <h3>Start Date: 2013/02/14 12:00</h3>
+    <h3>Start Station: Station3</h3>
+    <h3>End Date: 2005/02/15 16:31</h3>
+    <h3>End Station: Station1</h3>
+    <h3>Bike ID: 7</h3>
+    <h3>Subscription Type: 1</h3>
+    <h3>Zip Code: 87898</h3>
+    
+    <form action="/trips/3" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Trip">
+    </form>
+  
+  <nav aria-label="...">
+    <ul class="pager">
+      <li><a href="#">Previous</a></li>
+      <li><a href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+<!--- HERE ENDS THE DYNAMIC PART OF EACH .ERB -->
+  <footer class="primary-footer">
+    <small class="copyright">&copy; Bay Area Bike Share</small>
+    <ul class="social-media">
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+      </li>
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+      </li>
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+      </li>
+      <li class="social-media">
+        <a href="#" target="_blank"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src='js/bootstrap.js'></script>
+
+  </body>
+</html>

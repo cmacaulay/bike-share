@@ -142,5 +142,4 @@ RSpec.describe Station do
       expect(result.name).to eq("Station3")
     end
   end
-
 end
