@@ -43,7 +43,32 @@
         </div>
     </nav>
 <!--- HERE STARTS THE DYNAMIC PART OF EACH .ERB -->
-    <%= yield %>
+    <h1>Edit Trip</h1>
+  <form action="/trips/1" method="POST">
+    <input type="hidden" name="_method" value="PUT"/>
+    <input type="text" name="trip[duration]" value = "67" placeholder="Duration"/><br>
+    <input type="date" name="trip[start_date]" value="2013/01/01 12:00" placeholder="Start Date"/><br>
+    <input type="date" name="trip[end_date]" value="2005/06/23 16:31" placeholder="End Date"/><br>
+    <select name="trip[start_station_id]">
+      
+        <option value=1>Station1</option>
+      
+        <option value=2>Station2</option>
+      
+    </select>
+    <select name="trip[end_station_id]">
+      
+        <option value=1>Station1</option>
+      
+        <option value=2>Station2</option>
+      
+    </select>
+    <input type="integer" name="trip[bike_id]" value="12" placeholder="Bike ID"/><br>
+    <input type="text" name="trip[subscription_id]" value= "" placeholder="Subscription Type"/><br>
+    <input type="integer" name="trip[zipcode]" value="87877" placeholder="Zip Code"/><br>
+    <input type="submit" value="Submit Changes"/>
+  </form>
+
 <!--- HERE ENDS THE DYNAMIC PART OF EACH .ERB -->
   <footer class="primary-footer">
     <small class="copyright">&copy; Bay Area Bike Share</small>

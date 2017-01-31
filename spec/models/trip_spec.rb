@@ -42,7 +42,8 @@ RSpec.describe Trip do
   end
 
   describe 'validations' do
-    it "is invalid without a end station id" do
+    it "is invalid without an end station id" do
+
       trip = Trip.create(duration:         67,
                          start_date:       "2013/01/01 12:00",
                          start_station_id: 6,
@@ -56,7 +57,7 @@ RSpec.describe Trip do
   end
 
   describe 'validations' do
-    it "is invalid without a end date" do
+    it "is invalid without an end date" do
       trip = Trip.create(duration:         67,
                          start_date:       "2013/01/01 12:00",
                          start_station_id: 6,

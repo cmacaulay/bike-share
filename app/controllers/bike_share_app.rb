@@ -51,43 +51,43 @@ class BikeShareApp < Sinatra::Base
     erb :'stations/dashboard'
   end
 
-  #TRIPS
-  #  get '/trips' do
-  #    @trips = Trip.all.order('start_date DESC') #see how to display them in 30 trips view
-  #
-  #   erb :'/trips/index'
-  #  end
-  #
-  # get '/trips/new' do
-  #   @trip = Trip.new
-  #
-  #   erb :'/trips/new'
-  # end
-  #
-  # get '/trips/:id' do
-  #   @trip = Trip.find(params[:id])
-  #
-  #   erb :'/trips/show'
-  # end
-  #
-  # get '/trips/:id/edit' do
-  #   @trip = Trip.find(params[:id])
-  #
-  #   erb :'/trips/edit'
-  # end
-  #
-  # post '/trips' do
-  #   @trip = Trip.create(params[:trip])
-  #   redirect "/trips/#{@trip.id}"
-  # end
-  #
-  # put '/trips/:id' do
-  #   @trip = Trip.update(params[:id], params[:trip]) #params[:id].to_i ????
-  #   redirect "/trips/#{@trip.id}"
-  # end
-  #
-  # delete '/trips/:id' do
-  #   Trip.destroy(paramas[:id])
-  #   redirect '/trips'
-  # end
+  get '/trips' do
+    @trips = Trip.all
+
+    erb :'trips/index'
+  end
+
+  get '/trips/new' do
+    @trip = Trip.new
+
+    erb :'/trips/new'
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params[:id])
+
+    erb :'/trips/show'
+  end
+
+  get '/trips/:id/edit' do
+    @stations = Station.all
+    @trip = Trip.find(params[:id])
+
+    erb :'/trips/edit'
+  end
+
+  post '/trips' do
+    @trip = Trip.create(params[:trip])
+    redirect "/trips/#{@trip.id}"
+  end
+
+  put '/trips/:id' do
+    @trip = Trip.update(params[:id], params[:trip]) #params[:id].to_i ????
+    redirect "/trips/#{@trip.id}"
+  end
+
+  delete '/trips/:id' do
+    Trip.destroy(paramas[:id])
+    redirect '/trips'
+  end
 end
