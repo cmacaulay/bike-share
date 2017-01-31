@@ -52,14 +52,11 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_popular_starting_station
-    group(:start_station_id).count("id").max_by do |station, count|
-      count
-    end
+    group(:start_station_id).count("id").max_by { |station, count| count }
   end
 
-    def self.most_popular_ending_station
-    group(:end_station_id).count("id").max_by do |station, count|
-      count
-    end
+  def self.most_popular_ending_station
+    group(:end_station_id).count("id").max_by { |station, count| count }
   end
+
 end

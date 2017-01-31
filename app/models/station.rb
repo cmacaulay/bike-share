@@ -1,3 +1,4 @@
+require 'pry'
 class Station < ActiveRecord::Base
   belongs_to :city
   has_many   :trips
@@ -53,6 +54,14 @@ class Station < ActiveRecord::Base
     return [] if fewest_bikes.nil?
     where("dock_count = #{fewest_bikes}")
   end
+
+  def rides_started_at_station(trip)
+    Trip.where(start_station_id: trip.start_station_id).count
+
+  end
+
+    def rides_ended_at_station(trip)
+    Trip.where(end_station_id: trip.end_station_id).count
 
   def most_frequent_starting_bike_id
     Station.group(:bike_id).count("id").max_by do |bike, count|
