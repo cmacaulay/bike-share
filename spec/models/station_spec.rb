@@ -140,10 +140,8 @@ RSpec.describe Station do
       result = Station.newest_station
 
       expect(result.name).to eq("Station3")
-
     end
   end
-
 
   describe '.rides_started_at_station' do
     it "returns rides started at station" do
@@ -162,6 +160,5 @@ RSpec.describe Station do
       expect(station1.rides_ended_at_station(trip1)).to eq(1)
       end
   end
-
 
 end

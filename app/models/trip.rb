@@ -59,6 +59,4 @@ class Trip < ActiveRecord::Base
     group(:end_station_id).count("id").max_by { |station, count| count }
   end
 
-
-
 end
