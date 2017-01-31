@@ -54,8 +54,11 @@ class Station < ActiveRecord::Base
     where("dock_count = #{fewest_bikes}")
   end
 
-  def self.most_frequent_starting_bike_id
-    :bike_id
+  def most_frequent_starting_bike_id
+    Station.group(:bike_id).count("id").max_by do |bike, count|
+      count
+    end
+    #returns array of [bike_ids, number of rides]
   end
 
   def self.most_frequent_destination
@@ -67,7 +70,7 @@ class Station < ActiveRecord::Base
   end
 
   def self.most_frequent_zipcode_starting
-    maximum(:zipcode)
+    group(:zipcode).count
   end
 
 end
