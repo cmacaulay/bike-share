@@ -56,5 +56,11 @@ class Trip < ActiveRecord::Base
       count
     end
   end
-  
+
+    def self.most_popular_ending_station
+    group(:end_station_id).count("id").max_by do |station, count|
+      count
+    end
+  end
+
 end

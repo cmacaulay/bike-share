@@ -371,4 +371,38 @@ RSpec.describe Trip do
       expect(Trip.most_popular_starting_station).to eq([6, 2])
     end
   end
+
+    describe '.most_popular_ending_station' do
+    it 'returns nil when no trips are in database' do
+      expect(Trip.most_popular_ending_station).to eq(nil)
+    end
+    it 'will calculate the most frequently used end station' do
+      trip1 = Trip.create(duration:       20,
+                         start_date:      "2013/01/01 12:00",
+                         start_station_id: 6,
+                         end_date:        "2005/06/23 16:31",
+                         end_station_id:   2,
+                         bike_id:          12,
+                         subscription_id:  1,
+                        )
+      trip2 = Trip.create(duration:         10,
+                          start_date:       "2005/01/01 12:00",
+                          start_station_id: 4,
+                          end_date:         "2013/08/06 12:00",
+                          end_station_id:   2,
+                          bike_id:          7,
+                          subscription_id:  2,
+                        )
+      trip3 = Trip.create(duration:       30,
+                         start_date:      "2013/01/02 12:00",
+                         start_station_id: 6,
+                         end_date:        "2005/06/23 16:31",
+                         end_station_id:   3,
+                         bike_id:          11,
+                         subscription_id:  1,
+                        )
+
+      expect(Trip.most_popular_ending_station).to eq([2, 2])
+    end
+  end
 end
