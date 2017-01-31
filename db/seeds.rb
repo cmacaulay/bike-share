@@ -46,17 +46,17 @@ require_relative 'seed_helper'
     Condition.delete_all
     CSV.foreach('db/csv/weather.csv', headers: true, header_converters: :symbol) do |row|
       Condition.create(date:            transform_date(row[:date]),
-                      max_temperature:  row[:max_temperature_f],
-                      min_temperature:  row[:min_temperature_f],
-                      mean_temperature: row[:mean_temperature_f],
-                      mean_humidity:    row[:mean_humidity],
-                      mean_visibility:  row[:mean_visibility_miles],
-                      mean_wind_speed:  row[:mean_wind_speed_mph],
-                      precipitation:    row[:precipitation_inches],
+                      max_temperature:  row[:max_temperature_f].to_i,
+                      min_temperature:  row[:min_temperature_f].to_i,
+                      mean_temperature: row[:mean_temperature_f].to_i,
+                      mean_humidity:    row[:mean_humidity].to_i,
+                      mean_visibility:  row[:mean_visibility_miles].to_i,
+                      mean_wind_speed:  row[:mean_wind_speed_mph].to_i,
+                      precipitation:    row[:precipitation_inches].to_i,
                       zipcode:          row[:zip_code]
                       )
     end
-    puts "Imported Conditionss to Conditions Table!"
+    puts "Imported Conditions to Conditions Table!"
   end
 
   import_stations_from_csv
