@@ -337,4 +337,5 @@ RSpec.describe Trip do
       expect(Trip.date_most_travelled).to eq(["2005/01/01 12:00", 2])
     end
   end
+
 end

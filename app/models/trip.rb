@@ -50,4 +50,5 @@ class Trip < ActiveRecord::Base
       count
     end
   end
+
 end

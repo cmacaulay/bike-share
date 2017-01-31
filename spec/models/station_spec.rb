@@ -140,11 +140,7 @@ RSpec.describe Station do
       result = Station.newest_station
 
       expect(result.name).to eq("Station3")
-
     end
   end
-
-
-
 
 end
