@@ -38,4 +38,16 @@ class Trip < ActiveRecord::Base
       count
     end
   end
+
+  def self.date_least_travelled
+    group(:start_date).count("id").min_by do |date, count|
+      count
+    end
+  end
+
+  def self.date_most_travelled
+    group(:start_date).count("id").max_by do |date, count|
+      count
+    end
+  end
 end
