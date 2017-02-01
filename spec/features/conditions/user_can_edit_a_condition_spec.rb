@@ -1,6 +1,6 @@
 require_relative '../../spec_helper'
 
-RSpec.describe "when user able to edit a weather condition" do
+RSpec.describe "when user visits edit weather condition path" do
   it "user can edit a condition" do
     condition = Condition.create(date: "2013-05-16",
                                 max_temperature: 74,
@@ -12,8 +12,8 @@ RSpec.describe "when user able to edit a weather condition" do
                                 precipitation: 0.1,
                                 zipcode: 91492)
 
-    visit('/conditions/#{condition.id}/edit')
-
+    visit("/conditions/#{condition.id}/edit")
+    
     fill_in 'condition[date]', with: "2014-06-17"
     fill_in 'condition[max_temperature]', with: 77
     fill_in 'condition[mean_temperature]', with: 55
@@ -24,10 +24,11 @@ RSpec.describe "when user able to edit a weather condition" do
     fill_in 'condition[precipitation]', with: 0.09
     fill_in 'condition[zipcode]', with: 12345
 
-    click_on 'Submit Changes'
+    click_on "Submit Changes"
+    save_and_open_page
+    condition = Condition.last
+    require 'pry';binding.pry
 
-    condition_test = Condition.find_by(date: "2014-06-17")
-
-    expect(condition_test.max_temperature).to eq(77)
+    expect(condition.max_temperature).to eq(77)
   end
 end
