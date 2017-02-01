@@ -87,7 +87,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   delete '/trips/:id' do
-    Trip.destroy(paramas[:id])
+    Trip.destroy(params[:id])
     redirect '/trips'
   end
 
@@ -102,13 +102,13 @@ class BikeShareApp < Sinatra::Base
     erb :'/conditions/index'
   end
 
+  #/:id
+  
   get '/conditions/new' do
     @condition = Condition.new
 
     erb :'/conditions/new'
   end
-
-  #/:id
 
   get '/conditions/:id/edit' do
     @condition = Condition.find(params[:id])
@@ -116,5 +116,14 @@ class BikeShareApp < Sinatra::Base
     erb :'/conditions/edit'
   end
 
+  post '/conditions' do
+    @condition = Condition.create(params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  delete '/conditions/:id' do
+    Condition.destroy(params[:id])
+    redirect '/conditions'
+  end
 
 end

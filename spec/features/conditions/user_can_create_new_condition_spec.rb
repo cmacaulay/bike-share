@@ -15,8 +15,8 @@ RSpec.describe "user can create new weather condition" do
     fill_in 'condition[precipitation]', with: 0.09
     fill_in 'condition[zipcode]', with: 12345
 
-    click_on 'Create New Weather Condition'
-    binding.pry
+    click_on "Create a New Weather Condition Entry"
+    
     condition_test = Condition.find_by(date: "2014-06-17")
 
     expect(condition_test.max_temperature).to eq(77)
