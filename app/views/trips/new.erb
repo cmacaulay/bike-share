@@ -5,7 +5,7 @@
   <form action='/trips' method="post">
 
     <input type="text" name="trip[duration]" placeholder="Trip Duration">
-    <label for="name">Duration</label>
+    <label for="name">Duration (seconds)</label>
 
     <input type="date" name="trip[start_date]" placeholder="Start Date">
     <label for="name">Start Date</label>
@@ -13,17 +13,33 @@
     <input type="date" name="trip[end_date]" placeholder="End Date">
     <label for="name">End Date</label>
 
-    <input type="text" name="trip[start_station_id]" placeholder="Start Station">
-    <label for="name">Start Station</label>
-
-    <input type="text" name="trip[end_station_id]" placeholder="End Station">
-    <label for="name">End Station</label>
-
-    <input type="text" name="trip[bike_id]" placeholder="Bike ID">
-    <label for="name">Bike ID</label>
-
     <input type="text" name="trip[zipcode]" placeholder="Zipcode">
     <label for="name">Zip Code</label>
+
+    <select name="trip[start_station_id]" class="browser-default input-field">
+      <% @stations.each do |station| %>
+        <option value=<%= station.id %>><%= station.name %></option>
+      <% end %>
+    </select>
+    <label for="name">Start Station</label>
+
+    <select name="trip[end_station_id]" class="browser-default input-field">
+      <% @stations.each do |station| %>
+        <option value=<%= station.id %>><%= station.name %></option>
+      <% end %>
+    </select>
+    <label for="name">End Station</label>
+
+    <div class="row">
+      <div class="col s12">
+        <select class="browser-default input-field" name="trip[bike_id]">
+          <% @bikes.each do |bike| %>
+            <option value=<%= bike.id %>><%= bike.given_id %></option>
+          <% end %>
+        </select>
+        <label for="name">Bike ID</label>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col s12">
