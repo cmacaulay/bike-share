@@ -12,8 +12,6 @@ RSpec.describe "when user visits conditions path" do
                                 precipitation: 0.1,
                                 zipcode: 91492)
 
-
-
       visit('/conditions')
       expect(page).to have_content(condition_one.date)
       expect(page).to have_content(condition_one.max_temperature)
