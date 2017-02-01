@@ -12,7 +12,7 @@ RSpec.describe "when user visits a condition path" do
                               precipitation: 0.1,
                               zipcode: 91492)
   
-    visit("/stations/#{station.id}")
+    visit("/conditions/#{condition.id}")
 
     expect {click_on 'Delete Weather Condition'}.to change(Condition.all, :count).by(-1)
     expect(page).to_not have_content(condition.date)
