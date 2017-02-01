@@ -6,6 +6,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/' do
     erb :index
+
   end
 
   get '/stations' do
@@ -45,7 +46,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   delete '/stations/:id' do
-    Station.destroy(params[:id])
+    Station.destroy(params[:id].to_i)
     redirect '/stations'
   end
 
@@ -56,6 +57,9 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips' do
     @trips = Trip.paginate(:page => params[:page], :per_page => 30)
+
+    @page = params[:page].to_i
+
     erb :'trips/index'
   end
 
@@ -97,4 +101,45 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.all
     erb :'trips/trips-dashboard'
   end
+
+  get '/conditions' do
+    @conditions = Condition.paginate(:page => params[:page], :per_page => 30)
+    @page = params[:page].to_i
+    erb :'conditions/index'
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+
+    erb :'conditions/show'
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+
+   erb :"conditions/show"
+  end
+
+  get '/conditions/new' do
+    @condition = Condition.new
+
+    erb :'/conditions/new'
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+
+    erb :'/conditions/edit'
+  end
+
+  post '/conditions' do
+    @condition = Condition.create(params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  delete '/conditions/:id' do
+    Condition.destroy(params[:id])
+    redirect '/conditions'
+  end
+
 end
