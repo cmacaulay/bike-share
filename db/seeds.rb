@@ -35,7 +35,7 @@ require_relative 'seed_helper'
                   bike:             Bike.find_or_create_by(given_id: row[:bike_id]),
                   subscription:     Subscription.find_or_create_by(name: row[:subscription_type]),
                   zipcode:          row[:zip_code].to_i,
-                  condition:        Condition.find_by(date: transform_date(row[:start_date]), zipcode: row[:zip_code])
+                  condition:        Condition.find_by( date: transform_date(row[:start_date]) )
 
                   )
     end

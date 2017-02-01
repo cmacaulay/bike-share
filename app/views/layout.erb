@@ -4,23 +4,35 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+    <link rel="stylesheet" href="/application.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Bike Share! Global Warming is Real</title>
+    <title>Bike Share</title>
   </head>
   <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/robots">Home<span class="sr-only">(current)</span></a></li>
-      </div>
+    <!-- Dropdown Structure -->
 
-    </nav>
+    <div class="navbar-fixed">
+      <nav>
+         <div class="nav-wrapper">
+           <a href="/" class="left brand-logo">Bike Share</a>
+           <ul class="right hide-on-med-and-down">
+            <li><a href="/stations">Stations</a></li>
+            <li><a href="/trips">Bike Trips</a></li>
+            <li><a href="/conditions">Weather Conditions</a></li>
+          </ul>
+        </div>
+      </nav>
+     </div>
 
     <div class=containiner>
       <%= yield %>
     </div>
+<!--
+    <footer>
+        © Team Awesome
+    </footer>-->
+
   </body>
 </html>

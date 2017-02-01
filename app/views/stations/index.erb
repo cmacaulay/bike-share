@@ -1,11 +1,33 @@
-<h1>Stations</h1>
+<h1>Bike Share Stations</h1>
 
-<div class="stations">
-  <% @stations.each do |station| %>
-  <ul>
-    <li>Name: <%= station.name %></li>
-    <li>Dock Count: <%= station.dock_count %></li>
-    <li>City: <%= station.city.name %></li>
-    <li>Installation Date: <%= station.installation_date %></li>
+  <a class="waves-effect waves-light btn light-blue darken-3" href="/stations/new">Create New Station</a>
+
+<table class="bordered striped responsive-table">
+  <thead>
+    <tr>
+      <th data-field="id">Station Name</th>
+      <th data-field="id">Number of Bike Docks:</th>
+      <th data-field="id">Station City</th>
+      <th data-field="id">Date of Installation</th>
+    </tr>
+  </thead>
+
+  <div class="stations">
+    <% @stations.each do |station| %>
+    <tbody>
+      <tr>
+        <td><a href="/stations/<%=station.id%>"><%=station.name %></a></td>
+        <td><%= station.dock_count %></td>
+        <td><%= station.city.name %></td>
+        <td><%= station.installation_date %></td>
+
+        <td><a class="waves-effect waves-light btn btn-small orange darken-4" href='/stations/<%=station.id%>/edit' >Update</a></td>
+        <td><form action="/stations/<%= station.id %>" method = "POST"/>
+
+        <input type="hidden" name="_method" value="DELETE"/>
+        <input type="submit" value = "Delete"></form></td>
+      </tr>
+    </tbody>
   <% end %>
-</div>
+  </div>
+</table>

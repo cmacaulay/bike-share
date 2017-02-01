@@ -1,8 +1,12 @@
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 class BikeShareApp < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
 
   get '/' do
+    erb :index
 
-    erb :layout
   end
 
   get '/stations' do
@@ -42,7 +46,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   delete '/stations/:id' do
-    Station.destroy(params[:id])
+    Station.destroy(params[:id].to_i)
     redirect '/stations'
   end
 
@@ -52,7 +56,9 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    @trips = Trip.paginate(:page => params[:page], :per_page => 30)
+
+    @page = params[:page].to_i
 
     erb :'trips/index'
   end
@@ -97,9 +103,15 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions' do
-    @conditions = Condition.all
+    @conditions = Condition.paginate(:page => params[:page], :per_page => 30)
+    @page = params[:page].to_i
+    erb :'conditions/index'
+  end
 
-    erb :'/conditions/index'
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+
+    erb :'conditions/show'
   end
 
   get '/conditions/:id' do
@@ -107,7 +119,7 @@ class BikeShareApp < Sinatra::Base
 
    erb :"conditions/show"
   end
-  
+
   get '/conditions/new' do
     @condition = Condition.new
 
