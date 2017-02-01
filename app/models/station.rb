@@ -37,6 +37,10 @@ class Station < ActiveRecord::Base
     where("dock_count = #{max_bikes}")
   end
 
+  def self.fewest_bikes
+    minimum(:dock_count)
+  end
+
   def self.newest_station
     # station most recently installed
     order(:installation_date).last
@@ -44,10 +48,6 @@ class Station < ActiveRecord::Base
 
   def self.oldest_station
     order(:installation_date).first
-  end
-
-  def self.fewest_bikes
-    minimum(:dock_count)
   end
 
   def self.find_by_fewest_bikes
@@ -68,14 +68,13 @@ class Station < ActiveRecord::Base
     Trip.where(end_station_id: trip.end_station_id).count
   end
 
-  def most_frequent_starting_bike_id
-    Station.group(:bike_id).count("id").max_by do |bike, count|
-      count
-    end
-  end
-
   def most_frequent_destination(trip)
     Trip.where(end_station_id: trip.end_station_id).count
+  end
+
+  def most_frequent_origination_station
+    #build this method and test
+    #it should display what was the most common origin station that bikes that ended at that station came from
   end
 
   def date_with_most_trips(trip)
@@ -90,5 +89,11 @@ class Station < ActiveRecord::Base
       count
     end
     result.first
+  end
+
+  def most_frequent_starting_bike_id
+    Station.group(:bike_id).count("id").max_by do |bike, count|
+      count
+    end
   end
 end

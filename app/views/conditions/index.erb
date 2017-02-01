@@ -4,14 +4,14 @@
   <% @conditions.each do |condition| %>
     <h1><%= @page %></h1>
     <h3>Date: <%= condition.date %></h3>
-    <h3>Maximum Temperature: <%= condition.max_temperature %></h3>
-    <h3>Mean Temperature: <%= condition.mean_temperature %></h3>
-    <h3>Minimum Temperature: <%= condition.min_temperature %></h3>
-    <h3>Mean Humidity: <%= condition.mean_humidity %></h3>
-    <h3>Mean Visibility (Miles): <%= condition.mean_visibility %></h3>
-    <h3>Mean Wind Speed (MPH): <%= condition.mean_wind_speed %></h3>
-    <h3>Precipitation (Inches): <%= condition.precipitation %></h3>
-    <h3>Zip Code: <%= condition.zipcode %></h3>
+    <h3>Maximum Temperature: <%= @conditions.max_temperature %></h3>
+    <h3>Mean Temperature: <%= @conditions.mean_temperature %></h3>
+    <h3>Minimum Temperature: <%= @conditions.min_temperature %></h3>
+    <h3>Mean Humidity: <%= @conditions.mean_humidity %></h3>
+    <h3>Mean Visibility (Miles): <%= @conditions.mean_visibility %></h3>
+    <h3>Mean Wind Speed (MPH): <%= @conditions.mean_wind_speed %></h3>
+    <h3>Precipitation (Inches): <%= @conditions.precipitation %></h3>
+    <h3>Zip Code: <%= @conditions.zipcode %></h3>
     <form action="/conditions/<%= condition.id %>" method="GET">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Edit Condition">
