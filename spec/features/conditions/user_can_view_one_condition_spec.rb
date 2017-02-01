@@ -3,7 +3,7 @@ require 'pry'
 
 RSpec.describe "when user visits a single station" do
   it "user sees an individual condition" do
-    condition = Condition.create(date: "2013-05-16",
+    condition_one = Condition.create(date: "2013-05-16",
                                 max_temperature: 74,
                                 mean_temperature: 66,
                                 min_temperature: 58,
