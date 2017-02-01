@@ -292,7 +292,7 @@ RSpec.describe Station do
       expected = mission.most_frequent_zipcode(trip1)
       expect(expected).to eq(87757)
     end
-    
+
   describe '.rides_started_at_station' do
     it "returns rides started at station" do
       station1 = Station.create!(name: "Station1", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
@@ -311,4 +311,5 @@ RSpec.describe Station do
       end
   end
 
+end
 end

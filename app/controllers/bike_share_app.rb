@@ -2,7 +2,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/' do
 
-    erb :index
+    erb :layout
   end
 
   get '/stations' do
@@ -94,4 +94,11 @@ class BikeShareApp < Sinatra::Base
     @trips = Trip.all
     erb :'trips/trips-dashboard'
   end
+
+  get '/conditions' do
+    @conditions = Condition.all
+
+    erb :'/conditions/index'
+  end
+
 end

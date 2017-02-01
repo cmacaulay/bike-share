@@ -32,8 +32,8 @@ require_relative 'seed_helper'
                   start_station:    Station.find_or_create_by(name: row[:start_station_name]),
                   end_date:         transform_date(row[:end_date]),
                   end_station:      Station.find_or_create_by(name: row[:end_station_name]),
-                  bike_id:          Bike.find_or_create_by(given_id: row[:bike_id]),
-                  subscription_id:  Subscription.find_or_create_by(name: row[:subscription_type]),
+                  bike:             Bike.find_or_create_by(given_id: row[:bike_id]),
+                  subscription:     Subscription.find_or_create_by(name: row[:subscription_type]),
                   zipcode:          row[:zip_code].to_i,
                   condition:        Condition.find_by(date: transform_date(row[:start_date]), zipcode: row[:zip_code])
 
@@ -52,7 +52,7 @@ require_relative 'seed_helper'
                       mean_humidity:    row[:mean_humidity].to_i,
                       mean_visibility:  row[:mean_visibility_miles].to_i,
                       mean_wind_speed:  row[:mean_wind_speed_mph].to_i,
-                      precipitation:    row[:precipitation_inches].to_i,
+                      precipitation:    row[:precipitation_inches].to_f,
                       zipcode:          row[:zip_code]
                       )
     end
