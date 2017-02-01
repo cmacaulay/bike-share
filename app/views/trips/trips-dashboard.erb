@@ -1,19 +1,14 @@
 <h1>Trips Dashboard</h1>
 
   <ul>
-    <li> Total count of stations: <%= Station.total_stations %></li>
-    <li> Average bikes available per station: <%= Station.average_bikes_station %></li>
-    <li> Most bikes available at a station:<%= Station.max_bikes_station %></li>
-    <li> Station(s) where the most bikes are available: <%= Station.stations_most_bikes %></li>
-    <li> Fewest bikes available at a station: <%= Station.#call_method %></li>
-    <li> Station(s) where the fewest bikes are available: <%= Station.#call_method %></li>
-    <li> Most recently installed station: <%= Station.#call_method %></li>
-    <li> Oldest station: <%= Station.#call_method %></li>
-    <li> Number of rides started at this station: <%= Station.#call_method %></li>
-    <li> Number of rides ended at this station: <%= Station.#call_method %></li>
-    <li> Most frequent destination station: <%= Station.#call_method %></li>
-    <li> Most freuqnet origination station: <%= Station.#call_method %></li>
-    <li> Date with the highest number of trips started at this station: <%= Station.#call_method %></li>
-    <li> Most frequent zip code for users starting trips at this station: <%= Station.#call_method %></li>
-    <li> Bike ID most frequently starting a trip at this station: <%= Station.#call_method %></li>
+    <li> Total count of stations: <%= @trips.total_stations %></li>
+    <li> Average bikes available per station: <%= @trips.average_bikes_station %></li>
+    <li> Most bikes available at a station:<%= @trips.max_bikes %></li>
+    <li> Station(s) where the most bikes are available: <%= @trips.stations_most_bikes %></li>
+    <li> Fewest bikes available at a station: <%= @trips.fewest_bikes %></li>
+    <li> Station(s) where the fewest bikes are available: <%= @trips.fewest_bikes%></li>
+    <li> Most recently installed station: <%= @trips.newest_station %></li>
+    <li> Oldest station: <%= @trips.oldest_station %></li>
+    <li> Weather on the day with the highest rides: <%# =@trips.call_method %></li>
+    <li> Weather on the day with the lowest rides: <%# =@trips.call method %></li>
   </ul>
