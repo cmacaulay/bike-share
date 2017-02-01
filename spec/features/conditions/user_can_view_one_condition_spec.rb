@@ -1,5 +1,6 @@
 require_relative '../../spec_helper'
 require 'pry'
+
 RSpec.describe "when user visits a single station" do
   it "user sees an individual condition" do
     condition = Condition.create(date: "2013-05-16",
@@ -12,15 +13,13 @@ RSpec.describe "when user visits a single station" do
                                 precipitation: 0.1,
                                 zipcode: 91492)
 
-                                save_and_open_page
-      visit "/conditions/#{condition.id}"
+      visit "/conditions/#{condition_one.id}"
 
-      # binding.pry
-      expect(page).to have_content(condition.date)
-      expect(page).to have_content(condition.max_temperature)
-      expect(page).to have_content(condition.min_temperature)
-      expect(page).to have_content(condition.mean_temperature)
-      expect(page).to have_content(condition.mean_humidity)
-      expect(page).to have_content(condition.mean_visibility)
+      expect(page).to have_content(condition_one.date)
+      expect(page).to have_content(condition_one.max_temperature)
+      expect(page).to have_content(condition_one.min_temperature)
+      expect(page).to have_content(condition_one.mean_temperature)
+      expect(page).to have_content(condition_one.mean_humidity)
+      expect(page).to have_content(condition_one.mean_visibility)
    end
   end

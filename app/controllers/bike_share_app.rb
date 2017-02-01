@@ -2,6 +2,8 @@ require 'will_paginate'
 require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
+include WillPaginate::Sinatra::Helpers
+#not sure if it's necessary
 
   get '/' do
 
@@ -56,6 +58,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips' do
     @trips = Trip.paginate(:page => params[:page], :per_page => 30)
+    @page = params[:page].to_i
 
     erb :'trips/index'
   end
@@ -90,7 +93,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   delete '/trips/:id' do
-    Trip.destroy(paramas[:id])
+    Trip.destroy(params[:id])
     redirect '/trips'
   end
 
@@ -101,7 +104,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/conditions' do
     @conditions = Condition.paginate(:page => params[:page], :per_page => 30)
-    @page = params[:page].to_i #not sure about this
+    @page = params[:page].to_i
     erb :'conditions/index'
   end
 
@@ -109,6 +112,34 @@ class BikeShareApp < Sinatra::Base
     @condition = Condition.find(params[:id])
 
     erb :'conditions/show'
+  end
+
+  get '/conditions/:id' do
+    @condition = Condition.find(params[:id])
+
+   erb :"conditions/show"
+  end
+
+  get '/conditions/new' do
+    @condition = Condition.new
+
+    erb :'/conditions/new'
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Condition.find(params[:id])
+
+    erb :'/conditions/edit'
+  end
+
+  post '/conditions' do
+    @condition = Condition.create(params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  delete '/conditions/:id' do
+    Condition.destroy(params[:id])
+    redirect '/conditions'
   end
 
 end
