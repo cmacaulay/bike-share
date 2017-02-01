@@ -27,7 +27,6 @@ require_relative 'seed_helper'
   def import_trips_from_csv
     Trip.delete_all
     CSV.foreach('db/csv/trip.csv', headers: true, header_converters: :symbol) do |row|
-      require 'pry'; binding.pry
       Trip.create(duration:         row[:duration].to_i,
                   start_date:       transform_date(row[:start_date]),
                   start_station:    Station.find_or_create_by(name: row[:start_station_name]),
