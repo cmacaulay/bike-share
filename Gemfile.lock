@@ -114,7 +114,7 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   tux
-  will_paginate
+  will_paginate (~> 3.1.1)
 
 BUNDLED WITH
    1.14.3

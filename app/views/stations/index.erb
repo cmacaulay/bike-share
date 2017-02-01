@@ -22,8 +22,8 @@
         <td><%= station.installation_date %></td>
 
         <td><a class="waves-effect waves-light btn btn-small orange darken-4" href='/stations/<%=station.id%>/edit' >Update</a></td>
-
         <td><form action="/stations/<%= station.id %>" method = "POST"/>
+
         <input type="hidden" name="_method" value="DELETE"/>
         <input type="submit" value = "Delete"></form></td>
       </tr>

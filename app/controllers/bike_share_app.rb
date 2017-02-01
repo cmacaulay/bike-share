@@ -1,5 +1,5 @@
 require 'will_paginate'
-require 'will_paginate/active_record' 
+require 'will_paginate/active_record'
 
 class BikeShareApp < Sinatra::Base
   include WillPaginate::Sinatra::Helpers
@@ -89,7 +89,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   delete '/trips/:id' do
-    Trip.destroy(paramas[:id])
+    Trip.destroy(params[:id])
     redirect '/trips'
   end
 
