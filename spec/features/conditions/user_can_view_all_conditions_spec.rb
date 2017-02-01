@@ -21,4 +21,3 @@ RSpec.describe "when user visits conditions path" do
       expect(page).to have_content(condition_one.mean_visibility)
    end
   end
-
