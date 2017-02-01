@@ -1,14 +1,26 @@
 <h1>Edit Station</h1>
-  <form action="/stations/<%= @station.id %>" method="POST">
-    <input type="hidden" name="_method" value="PUT"/>
-    <input type="text" name="station[name]" value = "<%= @station.name %>" placeholder="Name"/><br>
-    <input type="integer" name="station[dock_count]" value="<%= @station.dock_count %>" placeholder="Dock Count"/><br>
+
+  <div class="row">
+
+    <form class="col s12" action="/stations/<%= @station.id %>" method="POST">
+
+      <div class="row">
+        <div class="input-field col s6">
+
+          <input type="hidden" name="_method" value="PUT"/>
+          <input type="text" name="station[name]" value = "<%= @station.name %>" placeholder="Name" class="validate"/><br/>
+          <input type="integer" name="station[dock_count]" value="<%= @station.dock_count %>" placeholder="Dock Count"/><br/>
+
     <select name="station[city_id]">
       <% @cities.each do |city| %>
-        <option value=<%= city.id %>><%= city.name %></option>
+        <option value="<%= city.id %>" ><%= city.name %></option>
       <% end %>
     </select>
 
-    <input type="date" name="station[installation_date]" value="<%= @station.installation_date %>" placeholder="Installation Date"/><br>
+    <input type="date" name="station[installation_date]" value="<%= @station.installation_date %>" placeholder="Installation Date"/><br/>
     <input type="submit" value="Submit Changes"/>
+
+  </div>
+  </div>
   </form>
+</div>
