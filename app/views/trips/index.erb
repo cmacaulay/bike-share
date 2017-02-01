@@ -1,0 +1,49 @@
+<h1>Bike Share Trips</h1>
+<a class="waves-effect waves-light btn orange darken-4" href="/trips/new">Create New Trip</a>
+
+<table class="bordered striped responsive-table">
+    <thead>
+      <tr>
+        <th data-field="id">Date</th>
+        <th data-field="id">Start Station</th>
+        <th data-field="id">End Station</th>
+        <th data-field="id">Duration</th>
+      </tr>
+    </thead>
+
+  <div class="trips">
+    <% @trips.each do |trip| %>
+      <tbody>
+        <tr>
+          <td><%=trip.start_date %></a></td>
+          <td><%= trip.start_station.name %></td>
+          <td><%= trip.end_station.name %></td>
+          <td><%= trip.duration %> seconds</td>
+
+          <td><a class="waves-effect waves-light btn btn-small light-blue darken-3" href='/trips/<%=trip.id%>' >More Trip Info</a></td>
+          <td><a class="waves-effect waves-light btn btn-small light-blue lighten-3" href='/trips/<%=trip.id%>/edit' >Update Trip Info</a></td>
+
+          <td><form action="/trips/<%= trip.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete Trip"></form></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </div>
+  </table>
+
+<div class="bottom-page-navigation">
+  <%= will_paginate @trips %>
+</div>
+
+<!--
+  <nav class="bottom-page-navigation" aria-label="...">
+    <div class="nav-wrapper" id="previous-next">
+      <ul class="pager right hide-on-med-and-down">
+        <li><a href="trips/!">Previous</a></li>
+        <li><a href="trips/!">Next</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<%# Figure out how to order trips by date, only display 30trips at a time and the buttons to back and forth%>

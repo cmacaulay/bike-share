@@ -1,0 +1,36 @@
+<h1> Create a New Weather Condition Entry</h1>
+
+<div class="trip-new">
+  <form action='/conditions' method="post">
+    <label for="name">Date: </label>
+
+    <input type="date" name="condition[date]">
+
+    <label for="name">Max Temperature: </label>
+    <input type="date" name="condition[max_temperature]">
+
+    <label for="name">Mean Temperature: </label>
+    <input type="date" name="condition[mean_temperature]">
+
+    <label for="name">Min Temperature: </label>
+    <input type="text" name="condition[min_temperature]">
+
+    <label for="name">Mean Humidity: </label>
+    <input type="text" name="condition[mean_humidity]">
+
+    <label for="name">Mean Visibility: </label>
+    <input type="integer" name="condition[mean_visibility]">
+
+    <label for="name">Mean Wind Speed: </label>
+    <input type="text" name="condition[mean_wind_speed]">
+
+    <label for="name">Precipitation: </label>
+    <input type="integer" name="condition[precipitation]">
+
+    <label for="name">Zip Code: </label>
+    <input type="integer" name="condition[zipcode]">
+
+    <input type="submit" value="Create a New Weather Condition Entry" />
+
+  </form>
+</div>

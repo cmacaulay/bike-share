@@ -1,0 +1,23 @@
+<h1>Create a New Trip</h1>
+
+<div class="trip-new">
+  <form action='/trips' method="post">
+    <label for="name">Duration: </label>
+    <input type="text" name="trip[duration]">
+    <label for="name">Start Date: </label>
+    <input type="date" name="trip[start_date]">
+    <label for="name">End Date: </label>
+    <input type="date" name="trip[end_date]">
+    <label for="name">Start Station: </label>
+    <input type="text" name="trip[start_station_id]">
+    <label for="name">En Station: </label>
+    <input type="text" name="trip[end_station_id]">
+    <label for="name">Bike ID: </label>
+    <input type="integer" name="trip[bike_id]">
+    <label for="name">Subscription Type: </label>
+    <input type="text" name="trip[subscription_id]">
+    <label for="name">Zip Code: </label>
+    <input type="integer" name="trip[zipcode]">
+    <input type="submit" value="Create New Trip" />
+  </form>
+</div>

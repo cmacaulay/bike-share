@@ -1,0 +1,24 @@
+<h1>Edit Weather Condition</h1>
+  <form action="/conditions/<%= @condition.id %>" method="POST">
+      <input type="hidden" name="_method" value="PUT"/>
+      
+      <input type="date" name="condition[date]" value= "<%= @condition.date %>" placeholder="Date"/><br>
+
+      <input type="integer" name="condition[max_temperature]" value="<%= @condition.max_temperature %>" placeholder= "Max Temperature"/><br>
+
+      <input type="integer" name="condition[mean_temperature]" value="<%= @condition.mean_temperature %>" placeholder= "Mean Temperature"/><br>
+
+      <input type="integer" name="condition[min_temperature]" value="<%= @condition.min_temperature %>" placeholder= "Min Temperature"/><br>
+
+      <input type="integer" name="condition[mean_humidity]" value="<%= @condition.mean_humidity %>" placeholder= "Mean Humidity"/><br>
+
+      <input type="integer" name="condition[mean_visibility]" value="<%= @condition.mean_visibility %>" placeholder= "Mean Visibility"/><br>
+
+      <input type="integer" name="condition[mean_wind_speed]" value="<%= @condition.mean_wind_speed %>" placeholder= "Mean Wind Speed"/><br>
+
+      <input type="float" name="condition[precipitation]" value="<%= @condition.precipitation %>" placeholder= "Precipitation"/><br>
+
+      <input type="integer" name="condition[zipcode]" value="<%= @condition.zipcode %>" placeholder= "Zipcode"/><br>
+
+      <input type="submit" value="Submit Changes"/>
+  </form>

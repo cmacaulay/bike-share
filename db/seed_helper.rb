@@ -1,0 +1,8 @@
+require 'csv'
+require 'active_record'
+require_relative '../app/models/bike'
+require_relative '../app/models/city'
+require_relative '../app/models/station'
+require_relative '../app/models/subscription'
+require_relative '../app/models/trip'
+require_relative '../app/models/condition'
