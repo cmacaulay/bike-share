@@ -25,8 +25,6 @@
 
       <div class="row">
         <div class="col s12">
-
-
           <select class="browser-default input-field" name="station[city_id]">
             <% @cities.each do |city| %>
               <option value=<%= city.id %>><%= city.name %></option>
@@ -34,7 +32,6 @@
           </select>
           <label for="city">Station City </label>
         </div>
-
       </div>
 
       <a class="waves-effect waves-light btn orange darken-4">
