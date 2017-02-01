@@ -1,7 +1,8 @@
 require_relative '../../spec_helper'
+require 'pry'
 
-RSpec.describe "when user visits conditions path" do
-  it "user sees all conditions" do
+RSpec.describe "when user visits a single station" do
+  it "user sees an individual condition" do
     condition_one = Condition.create(date: "2013-05-16",
                                 max_temperature: 74,
                                 mean_temperature: 66,
@@ -14,7 +15,8 @@ RSpec.describe "when user visits conditions path" do
 
 
 
-      visit('/conditions')
+      visit "/conditions/#{condition_one.id}"
+
       expect(page).to have_content(condition_one.date)
       expect(page).to have_content(condition_one.max_temperature)
       expect(page).to have_content(condition_one.min_temperature)
@@ -23,4 +25,3 @@ RSpec.describe "when user visits conditions path" do
       expect(page).to have_content(condition_one.mean_visibility)
    end
   end
-
