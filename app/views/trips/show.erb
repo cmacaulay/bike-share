@@ -1,6 +1,6 @@
 <div class="trip container">
   <div class="row">
-       <div class="col s12 m12">
+       <div class="col s6 m6">
          <div class="card blue-grey darken-1">
            <div class="card-content white-text">
              <span class="card-title">Trip Info</span>
@@ -12,14 +12,15 @@
                <li>Start Station: <%= @trip.start_station_id %></li>
                <li>End Station: <%= @trip.end_station_id %></li>
                <li>Bike ID: <%= @trip.bike_id %></li>
-               <li>Subscription Type: <%= @trip.subscription_id %></li>
+               <li>Subscription Type: <%= @trip.subscription.name %></li>
                <li>Zip Code: <%= @trip.zipcode %></li>
              </ul>
            </div>
            <div class="card-action">
-             <a href="/trips/<%= @trip.id %>/edit">Edit Station</a>
+             <a class="waves-effect waves-light btn light-blue lighten-3" href="/trips/<%= @trip.id %>/edit">Edit Station</a>
              <form action="/trips/<%= @trip.id %>" method="POST">
-               <input type="hidden" name="_method" value="DELETE">
+               <br/>
+                <input type="hidden" name="_method" value="DELETE">
                <input type="submit" value="Delete Trip">
              </form>
            </div>
