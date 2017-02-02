@@ -1,13 +1,36 @@
-<h1>Station Dashboard</h1>
+<div class="container">
+  <div class="row">
+         <div class="col s12 m12">
+           <div class="card blue-grey darken-1">
+             <div class="card-content white-text">
+               <span class="card-title"></span>
+               <h4>Station Dashboard</h4>
+               <ul>
+                 <li> Total count of stations: <%= @stations.total_stations %></li>
+                 <li> Average bikes available per station: <%= @stations.average_bikes_per_station %></li>
+                 <li> Most bikes available at a station:<%= @stations.max_bikes %></li>
+                 <li> Station(s) where the most bikes are available:
 
-  <ul>
-    <li> Total count of stations: <%= @stations.total_stations %></li>
-    <li> Average bikes available per station: <%= @stations.average_bikes_station %></li>
-    <li> Most bikes available at a station:<%= @stations.max_bikes_station %></li>
-    <li> Station(s) where the most bikes are available: <%= @stations.stations_most_bikes %></li>
-    <li> Fewest bikes available at a station: <%= @stations.fewest_bikes %></li>
-    <li> Station(s) where the fewest bikes are available: <%= @stations.find_by_fewest_bikes %></li>
-    <li> Most recently installed station: <%= @stations.newest_station %></li>
-    <li> Oldest station: <%= @stations.oldest_station %></li>
+                         <% @stations.stations_with_most_bikes.each do |station| %>
+                           <%= station.name %>
+                         <% end %>
 
-  </ul>
+                  </li>
+                 <li> Fewest bikes available at a station: <%= @stations.fewest_bikes %></li>
+                 <li> Station(s) where the fewest bikes are available:
+                   <select class="browser-default" name="most_bikes">
+                     <% @stations.find_by_fewest_bikes.each do |station| %>
+                      <option> <%= station.name %> </option>
+                     <% end %>
+                  </select>
+                 <li> Most recently installed station: <%= @stations.newest_station %></li>
+                 <li> Oldest station: <%= @stations.oldest_station %></li>
+                 <li> Date with the highest number of trips started at this station: <%= @stations.date_with_most_trips %></li>
+                 <li> Most frequent zip code for users starting trips at this station: <%= @stations.most_frequent_zipcode %></li>
+                 <li> Bike ID most frequently starting a trip at this station: <%= @stations.most_frequent_starting_bike_id %></li>
+               </ul>
+             </div>
+        </div>
+       </div>
+    </div>
+  </div>

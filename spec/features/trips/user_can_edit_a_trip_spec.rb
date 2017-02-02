@@ -14,10 +14,9 @@ RSpec.describe "when a user visits a trip path" do
                        subscription_id:  1,
                        zipcode:           87877
                       )
-    # binding.pry
+
     visit "/trips/#{trip.id}/edit"
 
-    # save_and_open_page
     fill_in 'trip[duration]', with: 45
     fill_in 'trip[start_date]', with: "2015/03/02 15:00"
     select "Station2", from: 'trip[start_station_id]'

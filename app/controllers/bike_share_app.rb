@@ -51,6 +51,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/station-dashboard' do
     @stations = Station.all
+    @trips    = Trip.all
     erb :'stations/station-dashboard'
   end
 
@@ -63,7 +64,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/new' do
+    @stations = Station.all
     @trip = Trip.new
+    @subscriptions = Subscription.all
+    @bikes = Bike.all
 
     erb :'/trips/new'
   end
@@ -77,6 +81,8 @@ class BikeShareApp < Sinatra::Base
   get '/trips/:id/edit' do
     @stations = Station.all
     @trip = Trip.find(params[:id])
+    @subscriptions = Subscription.all
+    @bikes = Bike.all
 
     erb :'/trips/edit'
   end
@@ -98,6 +104,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @trips = Trip.all
+    @stations = Station.all
     erb :'trips/trips-dashboard'
   end
 
@@ -138,6 +145,11 @@ class BikeShareApp < Sinatra::Base
   delete '/conditions/:id' do
     Condition.destroy(params[:id])
     redirect '/conditions'
+  end
+
+  get '/weather-dashboard' do
+    @conditions = Condition.all
+    erb :'conditions/weather-dashboard'
   end
 
 end

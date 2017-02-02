@@ -1,21 +1,49 @@
 <h1>Edit Trip</h1>
+<div class="container">
   <form action="/trips/<%= @trip.id %>" method="POST">
     <input type="hidden" name="_method" value="PUT"/>
-    <input type="text" name="trip[duration]" value = "<%= @trip.duration %>" placeholder="Duration"/><br>
-    <input type="date" name="trip[start_date]" value="<%= @trip.start_date %>" placeholder="Start Date"/><br>
-    <input type="date" name="trip[end_date]" value="<%= @trip.end_date %>" placeholder="End Date"/><br>
-    <select name="trip[start_station_id]">
+    <input type="text" name="trip[duration]" value = "<%= @trip.duration %>" /><br>
+    <label for="name">Duration (seconds)</label>
+    <input type="text" name="trip[start_date]" value="<%= @trip.start_date %>" placeholder="Installation Date" class="validate input-field"/><br>
+    <label for="name">Start Date</label>
+    <input type="text" name="trip[end_date]" value="<%= @trip.end_date %>" /><br>
+    <label for="name">End Date</label>
+    <input type="text" name="trip[zipcode]" value = "<%= @trip.zipcode %>">
+    <label for="name">Zip Code</label>
+    <select name="trip[start_station_id]" class="browser-default input-field">
       <% @stations.each do |station| %>
         <option value=<%= station.id %>><%= station.name %></option>
       <% end %>
     </select>
-    <select name="trip[end_station_id]">
+    <label for="name">Start Station</label>
+    <select name="trip[end_station_id]" class="browser-default input-field">
       <% @stations.each do |station| %>
         <option value=<%= station.id %>><%= station.name %></option>
       <% end %>
     </select>
-    <input type="integer" name="trip[bike_id]" value="<%=@trip.bike_id %>" placeholder="Bike ID"/><br>
-    <input type="text" name="trip[subscription_id]" value= "<%= @trip.subscription %>" placeholder="Subscription Type"/><br>
-    <input type="integer" name="trip[zipcode]" value="<%=@trip.zipcode %>" placeholder="Zip Code"/><br>
+    <label for="name">End Station</label>
+    <div class="row">
+      <div class="col s12">
+        <select class="browser-default input-field" name="trip[bike_id]">
+          <% @bikes.each do |bike| %>
+            <option value=<%= bike.id %>><%= bike.given_id %></option>
+          <% end %>
+        </select>
+        <label for="name">Bike ID</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <select class="browser-default input-field" name="trip[subscription_id]">
+          <% @subscriptions.each do |subscription| %>
+            <option value=<%= subscription.id %>><%= subscription.name %></option>
+          <% end %>
+        </select>
+        <label for="name">Subscription Type</label>
+      </div>
+    </div>
+    <a class="waves-effect waves-light btn orange darken-4">
     <input type="submit" value="Submit Changes"/>
+  </a>
   </form>
+</div>

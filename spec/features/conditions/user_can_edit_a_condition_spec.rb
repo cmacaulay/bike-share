@@ -25,7 +25,7 @@ RSpec.describe "when user visits edit weather condition path" do
     fill_in 'condition[zipcode]', with: 12345
 
     click_on "Submit Changes"
-    
+
     condition = Condition.last
 
 
