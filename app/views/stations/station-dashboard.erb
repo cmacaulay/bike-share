@@ -1,13 +1,29 @@
-<h1>Station Dashboard</h1>
-
-  <ul>
-    <li> Total count of stations: <%= @stations.total_stations %></li>
-    <li> Average bikes available per station: <%= @stations.average_bikes_station %></li>
-    <li> Most bikes available at a station:<%= @stations.max_bikes_station %></li>
-    <li> Station(s) where the most bikes are available: <%= @stations.stations_most_bikes %></li>
-    <li> Fewest bikes available at a station: <%= @stations.fewest_bikes %></li>
-    <li> Station(s) where the fewest bikes are available: <%= @stations.find_by_fewest_bikes %></li>
-    <li> Most recently installed station: <%= @stations.newest_station %></li>
-    <li> Oldest station: <%= @stations.oldest_station %></li>
-
-  </ul>
+<div class="container">
+  <div class="row">
+         <div class="col s12 m6">
+           <div class="card blue-grey darken-1">
+             <div class="card-content white-text">
+               <span class="card-title"><%= @station.name %></span>
+               <h4>Info</h4>
+               <<ul>
+                 <li> Total count of stations: <%= @stations.total_stations %></li>
+                 <li> Average bikes available per station: <%= @stations.average_bikes_station %></li>
+                 <li> Most bikes available at a station:<%= @stations.max_bikes_station %></li>
+                 <li> Station(s) where the most bikes are available: <%= @stations.stations_most_bikes %></li>
+                 <li> Fewest bikes available at a station: <%= @stations.fewest_bikes %></li>
+                 <li> Station(s) where the fewest bikes are available: <%= @stations.find_by_fewest_bikes %></li>
+                 <li> Most recently installed station: <%= @stations.newest_station %></li>
+                 <li> Oldest station: <%= @stations.oldest_station %></li>
+               </ul>
+             </div>
+          <div class="card-action">
+             <a href="/stations/<%= @station.id %>/edit">Edit Station</a>
+             <form action="/stations/<%= @station.id %>" method="POST">
+               <input type="hidden" name="_method" value="DELETE">
+               <input type="submit" value="Delete Station">
+             </form>
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-<h1>Trips Dashboard</h1>
+<h1>Weather Dashboard</h1>
   <div class="container">
     <div class="row">
            <div class="col s12 m6">
@@ -12,9 +12,11 @@
                    <li> Fewest bikes available at a station: <%= @trips.fewest_bikes %></li>
                    <li> Station(s) where the fewest bikes are available: <%= @trips.fewest_bikes%></li>
                    <li> Most recently installed station: <%= @trips.newest_station %></li>
-                   <li> Oldest station: <%= @trips.oldest_station %></li>
-                   <%#<li> Weather on the day with the highest rides: <%# =@trips.call_method>
-                   <li> Weather on the day with the lowest rides: <%= @trips.call method %>
+                   <%#li> Oldest station: <%=@trips.call_method </li>
+                   <li> Breakout of average number of rides, highest number of rides, and lowest number of rides on days with a high temperature in 10 degree chunks (e.g. average number of rides on days with high temps between fifty and sixty degrees): <%# =@trips.call_method
+                   <li> Breakout of average number of rides, highest number of rides, and lowest number of rides on days with precipitation in half-inch increments.: <%= @trips.call_method
+                   <li> Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean wind speeds in four mile increments.: <%= @trips.call_method
+                   <li> Breakout of average number of rides, highest number of rides, and lowest number of rides on days with mean visibility in miles in four mile increments: <%= @trips.call_method %>
                  </ul>
                </div>
             <div class="card-action">
