@@ -53,34 +53,28 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_popular_starting_station
-    group(:start_station_id).count("id").max_by { |station, count| count }
+    Station.find(Trip.group(:start_station_id).order('count_id DESC').limit(1).count(:id).keys.first)
   end
 
   def self.most_popular_ending_station
-    group(:end_station_id).count("id").max_by { |station, count| count }
+    Station.find(Trip.group(:end_station_id).order('count_id ASC').limit(1).count(:id).keys.first)
   end
 
-  # def self.trip_breakdown_by_month
-  #   breakout = trips_by_month
-  #   {
-  #     :monthly_breakdown =>
-  #     [(Date.parse breakout.keys.each {|date| date.to_s}.join),
-  #                  breakout.values.each {|trip| trip}.flatten]
-  #   }
-  #Month by Month breakdown of number of rides with subtotals for each year
+  # def self.number_of_subscribers
+  #   where.(subscription_id: 1).count
   # end
-
-  # def self.trips_by_month
-  #   Trip.group( "DATE_TRUNC ('month', 'start_date.date.strftime("%a, %d %b %Y")') " ).order("count_start_station_id DESC").count(:start_station_id)
+  #
+  # def self.number_of_customers
+  #   where.(subscription_id: 2).count
   # end
-  # def self.parse(date)
-  #    date.strftime("%a, %d %b %Y")
+  #
+  # def self.percentage_of_customers
+  #   ((number_of_customers.to_f/self.count.to_f) * 100).round(0)
   # end
-
-  def subscription_breakdown_count_percentage
-    #User subscription type breakout with both count and percentage.
-  end
-
+  #
+  # def self.percentage_of_subscribers
+  #   ((number_of_subscribers.to_f/self.count.to_f) * 100).round(0)
+  # end
 
 
 end
