@@ -7,7 +7,6 @@ class Condition < ActiveRecord::Base
             :mean_visibility,
             :mean_wind_speed,
             :precipitation,
-            :zipcode,
               presence: true
 
   has_many :trips
