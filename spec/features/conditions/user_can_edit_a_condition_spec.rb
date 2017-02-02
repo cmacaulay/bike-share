@@ -28,6 +28,7 @@ RSpec.describe "when user visits edit weather condition path" do
 
     condition = Condition.last
 
+
     expect(condition.max_temperature).to eq(77)
   end
 end

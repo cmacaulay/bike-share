@@ -1,3 +1,4 @@
+require 'pry'
 class Trip < ActiveRecord::Base
   validates :duration,
             :start_date,
@@ -12,7 +13,7 @@ class Trip < ActiveRecord::Base
   belongs_to :subscription
   belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
   belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
-  belongs_to :condition
+  belongs_to :condition, foreign_key: "date"
 
   def self.shortest_ride
     minimum(:duration)
@@ -46,6 +47,7 @@ class Trip < ActiveRecord::Base
     end
   end
 
+
   def self.date_most_travelled
     group(:start_date).count("id").max_by do |date, count|
       count
@@ -60,6 +62,15 @@ class Trip < ActiveRecord::Base
     Station.find(Trip.group(:end_station_id).order('count_id ASC').limit(1).count(:id).keys.first)
   end
 
+
+  def self.conditions_on_fewest_trips_date
+    date = Trip.date_least_travelled.first
+    date_condition = Condition.find_by(date: date)
+# binding.pry
+
+    "Precipitation in Inches: #{date_condition.precipitation}"
+  end
+  
   # def self.number_of_subscribers
   #   where.(subscription_id: 1).count
   # end
@@ -77,4 +88,7 @@ class Trip < ActiveRecord::Base
   # end
 
 
+
 end
+
+

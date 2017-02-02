@@ -9,5 +9,11 @@ class Condition < ActiveRecord::Base
             :precipitation,
               presence: true
 
-  has_many :trips
+  has_many :trips, :foreign_key => :start_date
+
 end
+
+
+
+
+
