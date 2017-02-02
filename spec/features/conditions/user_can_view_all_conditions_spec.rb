@@ -13,6 +13,7 @@ RSpec.describe "when user visits conditions path" do
                                 zipcode: 91492)
 
       visit('/conditions')
+
       expect(page).to have_content(condition_one.date)
       expect(page).to have_content(condition_one.max_temperature)
       expect(page).to have_content(condition_one.min_temperature)

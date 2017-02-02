@@ -3,6 +3,8 @@ require 'pry'
 class Station < ActiveRecord::Base
   belongs_to :city
   has_many   :trips
+  has_many   :start_trips, class_name: "Trip", foreign_key: "start_station_id"
+  has_many   :end_trips, class_name: "Trip", foreign_key: "end_station_id"
 
   validates :name,
             :dock_count,
@@ -60,31 +62,30 @@ class Station < ActiveRecord::Base
     Trip.where(bike_id: trip.bike_id).count
   end
 
-  def rides_started_at_station(trip)
-    Trip.where(start_station_id: trip.start_station_id).count
+  def rides_started_at_station(station)
+    station.start_trips.count
   end
 
-  def rides_ended_at_station(trip)
-    Trip.where(end_station_id: trip.end_station_id).count
+  def rides_ended_at_station(station)
+    station.end_trips.count
   end
 
-  def most_frequent_destination(trip)
-    Trip.where(end_station_id: trip.end_station_id).count
+  def most_frequent_destination
+    start_trips.group(:end_station_id).order("count_id DESC").limit(1).count(:id).keys.first
   end
 
   def most_frequent_origination_station
-    #build this method and test
-    #it should display what was the most common origin station that bikes that ended at that station came from
+    end_trips.group(:start_station_id).order("count_id DESC").limit(1).count(:id).keys.first
   end
 
-  def date_with_most_trips(trip)
+  def date_with_most_trips
     result = Trip.group(:start_date).count("id").max_by do |start_date, count|
       count
     end
     result.first
   end
 
-  def most_frequent_zipcode(trip)
+  def most_frequent_zipcode
     result = Trip.group(:zipcode).count("id").max_by do |zipcode, count|
       count
     end
@@ -92,8 +93,9 @@ class Station < ActiveRecord::Base
   end
 
   def most_frequent_starting_bike_id
-    Station.group(:bike_id).count("id").max_by do |bike, count|
+    result = start_trips.group(:bike_id).count("id").max_by do |bike, count|
       count
     end
+    result.first
   end
 end

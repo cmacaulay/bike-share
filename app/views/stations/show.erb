@@ -1,19 +1,31 @@
-<div class="station">
-  <h1><%= @station.name %></h1>
-  <h2>Info</h2>
-  <p>Dock Count: <%= @station.dock_count %></p>
-  <p>City: <%= @station.city.name %></p>
-  <p>Installation Date: <%= @station.installation_date %></p>
-  <li> Number of rides started at this station: <%= @station.rides_started_at_station %></li>
-  <li> Number of rides ended at this station: <%= @station.rides_ended_at_station %></li>
-  <li> Most frequent destination station: <%= @station.most_frequent_destination %></li>
-  <!-- <li> Most frequent origination station: <%= @station.#call_method %></li> -->
-  <li> Date with the highest number of trips started at this station: <%= @station.date_with_most_trips %></li>
-  <li> Most frequent zip code for users starting trips at this station: <%= @station.most_frequent_zipcode %></li>
-  <li> Bike ID most frequently starting a trip at this station: <%= @station.most_frequent_starting_bike_id%></li>
-  <p><a href="/stations/<%= @station.id %>/edit">Edit Station</a></p>
-  <form action="/stations/<%= @station.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Station">
-  </form>
+<div class="container">
+  <div class="row">
+       <div class="col s12 m6">
+         <div class="card blue-grey darken-1">
+           <div class="card-content white-text">
+             <span class="card-title"><%= @station.name %></span>
+             <h4>Info</h4>
+             <ul>
+               <li>Dock Count: <%= @station.dock_count %></li>
+               <li>City: <%= @station.city.name %></li>
+               <li>Installation Date: <%= @station.installation_date %></li>
+               <li>Number of rides started at this station: <%= @station.rides_started_at_station(@station) %></li>
+               <li>Number of rides ended at this station: <%= @station.rides_ended_at_station(@station) %></li>
+               <li>Most frequent destination station: <%= @station.most_frequent_destination %></li>
+               <li>Most frequent origination station: <%= @station.most_frequent_origination_station %></li>
+               <li>Date with the highest number of trips started at this station: <%= @station.date_with_most_trips %></li>
+               <li>Most frequent zip code for users starting trips at this station: <%= @station.most_frequent_zipcode %></li>
+               <li> Bike ID most frequently starting a trip at this station: <%= @station.most_frequent_starting_bike_id%></li>
+             </ul>
+           </div>
+        <div class="card-action">
+           <a href="/stations/<%= @station.id %>/edit">Edit Station</a>
+           <form action="/stations/<%= @station.id %>" method="POST">
+             <input type="hidden" name="_method" value="DELETE">
+             <input type="submit" value="Delete Station">
+           </form>
+        </div>
+      </div>
+     </div>
+  </div>
 </div>

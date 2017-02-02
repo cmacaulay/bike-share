@@ -1,14 +1,30 @@
 <h1>Trips Dashboard</h1>
-
-  <ul>
-    <li> Total count of stations: <%= @trips.total_stations %></li>
-    <li> Average bikes available per station: <%= @trips.average_bikes_station %></li>
-    <li> Most bikes available at a station:<%= @trips.max_bikes %></li>
-    <li> Station(s) where the most bikes are available: <%= @trips.stations_most_bikes %></li>
-    <li> Fewest bikes available at a station: <%= @trips.fewest_bikes %></li>
-    <li> Station(s) where the fewest bikes are available: <%= @trips.fewest_bikes%></li>
-    <li> Most recently installed station: <%= @trips.newest_station %></li>
-    <li> Oldest station: <%= @trips.oldest_station %></li>
-    <li> Weather on the day with the highest rides: <%# =@trips.call_method %></li>
-    <li> Weather on the day with the lowest rides: <%# =@trips.call method %></li>
-  </ul>
+  <div class="container">
+    <div class="row">
+           <div class="col s12 m6">
+             <div class="card blue-grey darken-1">
+               <div class="card-content white-text">
+                 <ul>
+                   <li> Total count of stations: <%= @trips.total_stations %></li>
+                   <li> Average bikes available per station: <%= @trips.average_bikes_station %></li>
+                   <li> Most bikes available at a station:<%= @trips.max_bikes %></li>
+                   <li> Station(s) where the most bikes are available: <%= @trips.stations_most_bikes %></li>
+                   <li> Fewest bikes available at a station: <%= @trips.fewest_bikes %></li>
+                   <li> Station(s) where the fewest bikes are available: <%= @trips.fewest_bikes%></li>
+                   <li> Most recently installed station: <%= @trips.newest_station %></li>
+                   <li> Oldest station: <%= @trips.oldest_station %></li>
+                   <%#<li> Weather on the day with the highest rides: <%# =@trips.call_method>
+                   <li> Weather on the day with the lowest rides: <%= @trips.call method %>
+                 </ul>
+               </div>
+            <div class="card-action">
+               <a href="/stations/<%= @station.id %>/edit">Edit Station</a>
+               <form action="/stations/<%= @station.id %>" method="POST">
+                 <input type="hidden" name="_method" value="DELETE">
+                 <input type="submit" value="Delete Station">
+               </form>
+            </div>
+          </div>
+         </div>
+      </div>
+    </div>
