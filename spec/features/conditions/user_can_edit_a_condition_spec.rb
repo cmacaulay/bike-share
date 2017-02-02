@@ -13,7 +13,7 @@ RSpec.describe "when user visits edit weather condition path" do
                                 zipcode: 91492)
 
     visit("/conditions/#{condition.id}/edit")
-    
+
     fill_in 'condition[date]', with: "2014-06-17"
     fill_in 'condition[max_temperature]', with: 77
     fill_in 'condition[mean_temperature]', with: 55
@@ -25,9 +25,8 @@ RSpec.describe "when user visits edit weather condition path" do
     fill_in 'condition[zipcode]', with: 12345
 
     click_on "Submit Changes"
-    save_and_open_page
+
     condition = Condition.last
-    require 'pry';binding.pry
 
     expect(condition.max_temperature).to eq(77)
   end
