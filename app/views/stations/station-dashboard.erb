@@ -10,14 +10,19 @@
                  <li> Average bikes available per station: <%= @stations.average_bikes_per_station %></li>
                  <li> Most bikes available at a station:<%= @stations.max_bikes %></li>
                  <li> Station(s) where the most bikes are available:
-                   <select class="browser-default">
+
                          <% @stations.stations_with_most_bikes.each do |station| %>
-                           <option> <%= station.name %> </option>
+                           <%= station.name %>
                          <% end %>
-                   </select>
+
                   </li>
                  <li> Fewest bikes available at a station: <%= @stations.fewest_bikes %></li>
-                 <li> Station(s) where the fewest bikes are available: <%= @stations.find_by_fewest_bikes %></li>
+                 <li> Station(s) where the fewest bikes are available:
+                   <select class="browser-default" name="most_bikes">
+                     <% @stations.find_by_fewest_bikes.each do |station| %>
+                      <option> <%= station.name %> </option>
+                     <% end %>
+                  </select>
                  <li> Most recently installed station: <%= @stations.newest_station %></li>
                  <li> Oldest station: <%= @stations.oldest_station %></li>
                  <li> Date with the highest number of trips started at this station: <%= @stations.date_with_most_trips %></li>
