@@ -53,11 +53,28 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_popular_starting_station
-    group(:start_station_id).count("id").max_by { |station, count| count }
+    Station.find(Trip.group(:start_station_id).order('count_id DESC').limit(1).count(:id).keys.first)
   end
 
   def self.most_popular_ending_station
-    group(:end_station_id).count("id").max_by { |station, count| count }
+    Station.find(Trip.group(:end_station_id).order('count_id ASC').limit(1).count(:id).keys.first)
   end
+
+  # def self.number_of_subscribers
+  #   where.(subscription_id: 1).count
+  # end
+  #
+  # def self.number_of_customers
+  #   where.(subscription_id: 2).count
+  # end
+  #
+  # def self.percentage_of_customers
+  #   ((number_of_customers.to_f/self.count.to_f) * 100).round(0)
+  # end
+  #
+  # def self.percentage_of_subscribers
+  #   ((number_of_subscribers.to_f/self.count.to_f) * 100).round(0)
+  # end
+
 
 end

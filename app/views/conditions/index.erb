@@ -1,32 +1,65 @@
 <h1>Weather Conditions</h1>
+<a class="waves-effect waves-light btn orange darken-4" href="/conditions/new">Create New Condition</a>
+<a class="waves-effect waves-light btn light-blue lighten-3" href="/weather-dashboard">Weather Dashboard</a>
 
-<div class="conditions">
-  <% @conditions.each do |condition| %>
-    <h1><%= @page %></h1>
-    <h3>Date: <%= condition.date %></h3>
-    <h3>Maximum Temperature: <%= condition.max_temperature %></h3>
-    <h3>Mean Temperature: <%= condition.mean_temperature %></h3>
-    <h3>Minimum Temperature: <%= condition.min_temperature %></h3>
-    <h3>Mean Humidity: <%= condition.mean_humidity %></h3>
-    <h3>Mean Visibility (Miles): <%= condition.mean_visibility %></h3>
-    <h3>Mean Wind Speed (MPH): <%= condition.mean_wind_speed %></h3>
-    <h3>Precipitation (Inches): <%= condition.precipitation %></h3>
-    <h3>Zip Code: <%= condition.zipcode %></h3>
-    <form action="/conditions/<%= condition.id %>" method="GET">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Edit Condition">
-    </form>
-    <form action="/conditions/<%= condition.id %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete Condition">
-    </form>
-            <% end %>
-            <div class="pagination">
-              <% if @page < 1 %>
-              <span class="next_page"><a href="/conditions?page=<%= @page + 1 %>" rel="next">Next »</span>
-                <% elsif @page >= 1 %>
-                <span class="prev_page"><a href="/conditions?page=<%= @page - 1 %>" rel="next">« Previous</span>
-                  <span class="next_page"><a href="/conditions?page=<%= @page + 1 %>" rel="next">Next »</span>
-                    <% end %>
-                  </div>
+<div class="row">
+<div class="col s12">
+<table id="weather-table" class="bordered striped responsive-table">
+    <thead>
+      <tr>
+        <th data-field="id">Page</th>
+        <th data-field="id">Date</th>
+        <th data-field="id">Maximum Temperature</th>
+        <th data-field="id">Mean Temperature</th>
+        <th data-field="id">Minimum Temperature</th>
+        <th data-field="id">Mean Humidity</th>
+        <th data-field="id">Mean Visibility (Miles)</th>
+        <th data-field="id">Mean Wind Speed (MPH)</th>
+        <th data-field="id">Precipitation (Inches)</th>
+        <th data-field="id">Zip Code</th>
+      </tr>
+    </thead>
+
+  <div class="trips">
+    <% @conditions.each do |condition| %>
+      <tbody>
+        <tr>
+          <td><%= @page %></td>
+          <td><%= condition.date %></td>
+          <td><%= condition.max_temperature %></td>
+          <td><%= condition.mean_temperature %></td>
+          <td><%= condition.min_temperature %></td>
+          <td><%= condition.mean_humidity %></td>
+          <td><%= condition.mean_visibility %></td>
+          <td><<%= condition.precipitation %></td>
+          <td><%= condition.zipcode %></td>
+
+          <td><a class="waves-effect waves-light btn btn-small light-blue darken-3" href='/conditions/<%=condition.id%>' >More Condition Info</a></td>
+          <td><a class="waves-effect waves-light btn btn-small light-blue lighten-3" href='/conditions/<%=condition.id%>/edit' >Update Condition Info</a></td>
+
+          <td>
+          <form action="/conditions/<%= condition.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete Condition">
+          </form>
+          </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </div>
+</table>
+
+<div class="pagination">
+  <% if @page < 1 %>
+    <span class="next_page"><a href="/conditions?page=<%= @page + 1 %>" rel="next">Next »</span>
+  <% elsif @page >= 1 %>
+    <span class="prev_page"><a href="/conditions?page=<%= @page - 1 %>" rel="next">« Previous</span>
+    <span class="next_page"><a href="/conditions?page=<%= @page + 1 %>" rel="next">Next »</span>
+  <% end %>
 </div>
+</div>
+</div>
+
+  <%#div class="bottom-page-navigation">
+    <%= will_paginate @trips>
+  </div%>

@@ -1,5 +1,6 @@
 <h1>Bike Share Trips</h1>
 <a class="waves-effect waves-light btn orange darken-4" href="/trips/new">Create New Trip</a>
+<a class="waves-effect waves-light btn light-blue lighten-3" href="/trips-dashboard">Trips Dashboard</a>
 
 <table class="bordered striped responsive-table">
     <thead>
@@ -15,7 +16,7 @@
     <% @trips.each do |trip| %>
       <tbody>
         <tr>
-          <td><%=trip.start_date %></a></td>
+          <td><%= trip.start_date %></a></td>
           <td><%= trip.start_station.name %></td>
           <td><%= trip.end_station.name %></td>
           <td><%= trip.duration %> seconds</td>
@@ -35,15 +36,3 @@
 <div class="bottom-page-navigation">
   <%= will_paginate @trips %>
 </div>
-
-<!--
-  <nav class="bottom-page-navigation" aria-label="...">
-    <div class="nav-wrapper" id="previous-next">
-      <ul class="pager right hide-on-med-and-down">
-        <li><a href="trips/!">Previous</a></li>
-        <li><a href="trips/!">Next</a></li>
-      </ul>
-    </div>
-  </nav>
-
-<%# Figure out how to order trips by date, only display 30trips at a time and the buttons to back and forth%>

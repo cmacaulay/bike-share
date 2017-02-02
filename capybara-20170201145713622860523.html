@@ -27,7 +27,24 @@
      </div>
 
     <div class="container">
-      <%= yield %>
+      <div class="conditions">
+  <h2>Condition Info</h2>
+  <p>Date: 2014-06-17</p>
+  <p>Maximum Temperature: 77</p>
+  <p>Mean Temperature: 55</p>
+  <p>Minimum Temperature: 44</p>
+  <p>Mean Humidity: 100</p>
+  <p>Mean Visibility (Miles): 3</p>
+  <p>Mean Wind Speed (MPH): 10</p>
+  <p>Precipitation (Inches): 0.09</p>
+  <p>Zip Code: 12345</p>
+  <p><a href="/conditions/1/edit">Edit Condition</a></p>
+  <form action="/conditions/1" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Weather Condition">
+  </form>
+</div>
+
     </div>
 <!--
     <footer>
