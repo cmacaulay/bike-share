@@ -1,4 +1,6 @@
 require_relative '../spec_helper'
+require 'pry'
+
 RSpec.describe Trip do
   describe 'validations' do
     it "is invalid without a duration" do
@@ -407,4 +409,60 @@ RSpec.describe Trip do
       expect(Trip.most_popular_ending_station).to eq([2, 2])
     end
   end
+
+    describe '.conditions_on_fewest_trips_date' do
+    it "returns precipitation on day with fewest trips" do
+      mission = Station.create(name: "Mission", dock_count: 5, city: City.create(name:"San Francisco"), installation_date: "2013-03-10")
+      trip1 = Trip.create(duration:       60,
+                         start_date:      "2013/03/01",
+                         start_station_id: 4,
+                         end_date:        "2013/03/01",
+                         end_station_id:   2,
+                         bike_id:          12,
+                         subscription_id:  1,
+                        )
+      trip2 = Trip.create(duration:         20,
+                          start_date:       "2013/03/01",
+                          start_station_id: 4,
+                          end_date:         "2013/03/02",
+                          end_station_id:   3,
+                          bike_id:          7,
+                          subscription_id:  2,
+                        )
+      trip3 = Trip.create(duration:         30,
+                          start_date:       "2015/04/03",
+                          start_station_id: 4,
+                          end_date:         "2015/04/03",
+                          end_station_id:   6,
+                          bike_id:          5,
+                          subscription_id:  2,
+                        )
+
+      condition1 = Condition.create(date: "2013/03/01",
+                      max_temperature: 71,
+                      mean_temperature: 67,
+                      min_temperature: 58,
+                      mean_humidity: 20,
+                      mean_visibility: 1,
+                      mean_wind_speed: 23,
+                      precipitation: 1
+                    )
+
+      condition2 = Condition.create(date: "2013/10/12",
+                      max_temperature: 72,
+                      mean_temperature: 68,
+                      min_temperature: 52,
+                      mean_humidity: 20,
+                      mean_visibility: 1,
+                      mean_wind_speed: 12,
+                      precipitation: 0
+                    )
+# binding.pry
+  expect(Trip.conditions_on_fewest_trips_date).to eq(1)
+
+
+
+    end
+  end
+
 end

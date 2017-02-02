@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="/application.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bike Share</title>
+  </head>
+  <body>
+
+    <!-- Dropdown Structure -->
+
+    <div class="navbar-fixed">
+      <nav>
+         <div class="nav-wrapper">
+           <a href="/" class="left brand-logo">Bike Share</a>
+           <ul class="right hide-on-med-and-down">
+            <li><a href="/stations">Stations</a></li>
+            <li><a href="/trips">Bike Trips</a></li>
+            <li><a href="/conditions">Weather Conditions</a></li>
+          </ul>
+        </div>
+      </nav>
+     </div>
+
+    <div class="container">
+      <div class="conditions">
+  <h2>Condition Info</h2>
+  <p>Date: 2014-06-17</p>
+  <p>Maximum Temperature: 77</p>
+  <p>Mean Temperature: 55</p>
+  <p>Minimum Temperature: 44</p>
+  <p>Mean Humidity: 100</p>
+  <p>Mean Visibility (Miles): 3</p>
+  <p>Mean Wind Speed (MPH): 10</p>
+  <p>Precipitation (Inches): 0</p>
+  <p>Zip Code: 12345</p>
+  <p><a href="/conditions/1/edit">Edit Condition</a></p>
+  <form action="/conditions/1" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Weather Condition">
+  </form>
+</div>
+
+    </div>
+<!--
+    <footer>
+        © Team Awesome
+    </footer>-->
+
+  </body>
+</html>
