@@ -1,33 +1,24 @@
 <h1>Weather Dashboard</h1>
   <div class="container">
     <div class="row">
-           <div class="col s12 m6">
+           <div class="col s12 m12">
              <div class="card blue-grey darken-1">
                <div class="card-content white-text">
-                 <h2>This is to display that the page loads, even we didn't get to make the methods work</h2>
                  <ul>
-                   <%#li> Breakout of average number of rides, highest number of rides,
-                   and lowest number of rides on days with a high temperature in 10 degree chunks
-                   (e.g. average number of rides on days with high temps between fifty and sixty degrees):
-                   <%= @trips.call_method></li>
+                   <li> Breakout of average number of rides, highest number of rides,
+                   and lowest number of rides on days with a high temperature in 10 degree chunks:
+                   <%# <%=@trips.call_method%></li><br/></br/></br/>
                    <li> Breakout of average number of rides, highest number of rides,
                    and lowest number of rides on days with precipitation in half-inch increments.:
-                   <%= @trips.call_method></li>
+                   <%# <%=@trips.call_method%></li></br/></br/></br/>
                    <li> Breakout of average number of rides, highest number of rides,
                    and lowest number of rides on days with mean wind speeds in four mile increments.:
-                   <%= @trips.call_method></li>
+                   <%# <%=@trips.call_method%></li></br/></br/></br/>
                    <li> Breakout of average number of rides, highest number of rides,
                    and lowest number of rides on days with mean visibility in miles in four mile increments:
-                   <%= @trips.call_method></li> %>
+                   <%# <%=@trips.call_method%></li></br/></br/></br/>
                  </ul>
                </div>
-            <div class="card-action">
-               <a href="/stations/<%= @station.id %>/edit">Edit Station</a>
-               <form action="/stations/<%= @station.id %>" method="POST">
-                 <input type="hidden" name="_method" value="DELETE">
-                 <input type="submit" value="Delete Station">
-               </form>
-            </div>
           </div>
          </div>
       </div>
